@@ -22,7 +22,7 @@ srk = eos.SRK(Tc, pc, M, omega, 'CO2')
 pr = eos.PR(Tc, pc, M, omega, 'CO2')
 lk = eos.LK(Tc, pc, M, omega, 'CO2')
 
-i=0
+i = 9
 
 print('Ideal gas')
 Z = ig.get_Z(T_0, p_0[i])
@@ -43,6 +43,16 @@ print('cv: ', rk.get_cv(T_0, p_0[i], Z=Z)/M)
 print('beta: ', rk.get_isothermal_compressibility(T_0, p_0[i], Z=Z))
 print('gamma: ', rk.get_adiabatic_index(T_0, p_0[i]))
 print('c: ', rk.get_speed_of_sound(T_0, p_0[i], Z=Z))
+
+print('\nSRK')
+Z = srk.get_Z(T_0, p_0[i])
+print('Z: ', Z)
+print('rho: ', srk.get_rho(T_0, p_0[i], Z=Z))
+#print('cp: ', rk.get_cp(T_0, p_0[i], Z=Z)/M)
+#print('cv: ', rk.get_cv(T_0, p_0[i], Z=Z)/M)
+#print('beta: ', rk.get_isothermal_compressibility(T_0, p_0[i], Z=Z))
+#print('gamma: ', rk.get_adiabatic_index(T_0, p_0[i]))
+#print('c: ', rk.get_speed_of_sound(T_0, p_0[i], Z=Z))
 
 print('\nSpan-Wagner')
 print('rho: ', PropsSI('DMASS', 'T', T_0, 'P', p_0[i], 'CO2'))

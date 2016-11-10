@@ -5,8 +5,9 @@ class EOS(object):
     R = 8.3144598 # J/K/mol
 
     def __init__(self, M, fluid):
-        self.M = M
+        self.molar_mass = M
         self.fluid = fluid
+        self.R_sp = self.R/M
 
     def get_Z(self, T, p):
         return 1.

@@ -91,6 +91,7 @@ class RedlichKwong(EOS):
 
         return (A*B1 + A1*B - (A1-B1-2*B*B1)) * Z / (3*Z**2 - 2*Z + (A-B-B**2))
 
+    # Departure function for Cp
     def get_departure_cp(self, T, p, **kwargs):
 
         if 'Z' in kwargs:
@@ -104,7 +105,7 @@ class RedlichKwong(EOS):
 
         return self.R*(Z + T*Z1 -1) - 3*self.a/2/self.b * (-log(1+h)/2/T**1.5 + 1/T**0.5/(1+h) * self.b*p/self.R * (-Z-T*Z1)/Z**2/T**2)
 
-
+    # Departure function for Cv
     def get_departure_cv(self, T, p, **kwargs):
 
         if 'Z' in kwargs:
@@ -116,12 +117,13 @@ class RedlichKwong(EOS):
 
         return -3*self.a/2/self.b * (-log(1+h)/2/T**1.5)
 
+    # Isothermal compressibililty
     def get_isothermal_compressibility(self, T, p, **kwargs):
 
         if 'Z' in kwargs:
             Z = kwargs['Z']
         else:
-            Z = get_Z(self, T, p)
+            Z = self.get_Z(T, p)
 
         Z1 = self.get_pdiff_Z_p_T(T, p, Z=Z)
 
