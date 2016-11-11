@@ -17,9 +17,9 @@ Tc = 31.1 + 273.15 # K
 omega = 0.228 # acentric factor
 
 ig = eos.IdealGas(M, 'CO2')
-rk = eos.RK1(Tc, pc, M, 'CO2')
-srk = eos.SRK1(Tc, pc, M, omega, 'CO2')
-pr = eos.PR1(Tc, pc, M, omega, 'CO2')
+rk = eos.RK(Tc, pc, M, 'CO2')
+srk = eos.SRK(Tc, pc, M, omega, 'CO2')
+pr = eos.PR(Tc, pc, M, omega, 'CO2')
 lk = eos.LK(Tc, pc, M, omega, 'CO2')
 
 i = -1
@@ -82,31 +82,3 @@ print('beta: ', PropsSI('ISOTHERMAL_COMPRESSIBILITY', 'T', T_0, 'P', p_0[i], 'CO
 print('gamma: ', PropsSI('CPMASS', 'T', T_0, 'P', p_0[i], 'CO2')/PropsSI('CVMASS', 'T', T_0, 'P', p_0[i], 'CO2'))
 print('c: ', PropsSI('SPEED_OF_SOUND', 'T', T_0, 'P', p_0[i], 'CO2'))
 
-# rho_0 = PropsSI('DMASS', 'T', T_0, 'P', p_0, 'CO2')
-# 
-# #print(rk.get_rho(T_0, p_0[-1]))
-# #print(srk.get_z(T_0, p_0[-1]))
-# #print(lk.get_rho(T_0, p_0[-1]))
-# 
-# #lk.get_z(T_0, p_0[-1])
-# 
-# 
-# rho = []
-# for i, p in enumerate(p_0):
-#     rho.append([ig.get_rho(T_0, p), rk.get_rho(T_0, p)[0], srk.get_rho(T_0, p)[0], max(pr.get_rho(T_0, p)), lk.get_rho(T_0, p)[0], rho_0[i]])
-# #print(rho)
-# 
-# rho = np.array(rho)
-# 
-# fig, ax = plt.subplots()
-# 
-# labels = ['Ideal gas', 'RK', 'SRK', 'PR', 'LK', 'SW']
-# 
-# for i in range(len(rho[0])):
-#     ax.plot(p_0/1e6, rho[:, i], label=labels[i])
-# 
-# ax.set_xlabel('Pressure [MPa]')
-# ax.set_ylabel(r'Density [kg/m$^3$]')
-# ax.legend(loc='best')
-# 
-# plt.show()
