@@ -31,6 +31,7 @@ class PengRobinson(EOS):
 
         # Solve the cubic equation for compressibility factor z
         coeffs = [1, -(1-B), A-2*B-3*B**2, -(A*B-B**2-B**3)]
+        #print(coeffs)
         roots = np.roots(coeffs)
 
         real_roots = roots[np.isreal(roots)].real

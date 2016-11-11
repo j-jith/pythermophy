@@ -78,7 +78,8 @@ class CubicEOS(EOS):
         #         (-self.R*T*self.d*p + a*p - self.b*self.d*p**2 + self.c*self.d*p**2 + self.e*p**2)/(self.R**2*T**2),
         #         (-self.R*T*self.e*p**2 - a*self.b*p**2 + a*self.c*p**2 - self.b*self.e*p**3 + self.c*self.e*p**3)/(self.R**3*T**3)
         # ]
-        coeffs = [1, self.get_A(p, T), self.get_B(T, p), self.get_C(T, p)]
+        coeffs = [1, self.get_A(T, p), self.get_B(T, p), self.get_C(T, p)]
+        #print(coeffs)
 
         roots = np.roots(coeffs)
         real_roots = roots[np.isreal(roots)].real

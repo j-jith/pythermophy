@@ -37,7 +37,7 @@ class LeeKesler(EOS):
         self.molar_mass = M # kg/mol
         self.R_sp = self.R/M
 
-    def get_reduced_vol(self, Tr, pr, fluid='simple'):
+    def get_reduced_volume(self, Tr, pr, fluid='simple'):
 
         if fluid=='reference':
             i = 1
@@ -70,8 +70,8 @@ class LeeKesler(EOS):
         Tr = T/self.T_crit
         pr = p/self.p_crit
 
-        z0 = pr/Tr * self.get_reduced_vol(Tr, pr, 'simple')
-        zr = pr/Tr * self.get_reduced_vol(Tr, pr, 'reference')
+        z0 = pr/Tr * self.get_reduced_volume(Tr, pr, 'simple')
+        zr = pr/Tr * self.get_reduced_volume(Tr, pr, 'reference')
 
         # departure term
         z1 = (zr - z0)/self.acentric_r
@@ -85,3 +85,90 @@ class LeeKesler(EOS):
 
         return z
 
+    def get_reduced_departure_energy(self, Tr, pr, fluid='simple', **kwargs):
+        if fluid=='reference':
+            i = 1
+        elif fluid=='simple':
+            i = 0
+        else:
+            return None
+
+        if 'Vr' in kwargs:
+            vr = kwargs['Vr']
+        else:
+            vr = self.get_reduced_volume(Tr, pr, fluid)
+
+        du = Tr*(-1/Tr/vr * (self.b2[i] + 2*self.b3[i]/Tr + self.b4[i]/Tr**2) \
+                -1/2/Tr/vr**2 * (self.c2[i] - 3*self.c3[i]/Tr**2) \
+                + self.d2[i]/5/Tr/vr**5 \
+                + 3*self.c4[i]/2/Tr**3/self.gamma[i] * \
+                (self.beta[i] + 1 - (self.beta[i] + 1 + self.gamma[i]/vr**2)*exp(-self.gamma[i]/vr**2)))
+
+        return du
+
+
+    def get_departure_energy(self, T, p, **kwargs):
+
+        Tr = T/self.T_crit
+        pr = p/self.p_crit
+
+        if 'Vr' in kwargs:
+            vr = kwargs['Vr']
+            du0 = self.R*self.T_crit * self.get_reduced_departure_energy(Tr, pr, 'simple', Vr=vr[0])
+            dur = self.R*self.T_crit * self.get_reduced_departure_energy(Tr, pr, 'reference', Vr=vr[1])
+        else:
+            du0 = self.R*self.T_crit * self.get_reduced_departure_energy(Tr, pr, 'simple')
+            dur = self.R*self.T_crit * self.get_reduced_departure_energy(Tr, pr, 'reference')
+
+        # departure term
+        du1 = (dur - du0)/self.acentric_r
+
+        return du0 + self.acentric*du1
+
+
+    def get_departure_enthalpy(self, T, p, **kwargs):
+
+        u = self.get_departure_energy(T, p)
+
+        if 'Z' in kwargs:
+            z = kwargs['Z']
+        else:
+            z = self.get_Z(T, p)
+
+        return self.R*T*(z-1) + u
+
+    def get_departure_cp(self, T, p, step=1e-2, **kwargs):
+
+        h2 = self.get_departure_enthalpy(T+step, p, **kwargs)
+        h1 = self.get_departure_enthalpy(T-step, p, **kwargs)
+
+        return (h2 - h1)/2/step
+
+    def get_departure_cv(self, T, p, step=1e-2, **kwargs):
+        Tr = T/self.T_crit
+        pr = p/self.p_crit
+
+        vr0 = self.get_reduced_volume(Tr, pr, 'simple')
+        vrr = self.get_reduced_volume(Tr, pr, 'reference')
+
+        u2 = self.get_departure_energy(T+step, p, Vr=[vr0, vrr])
+        u1 = self.get_departure_energy(T-step, p, Vr=[vr0, vrr])
+
+        return (u2 - u1)/2/step
+
+    def get_pdiff_Z_p_T(self, T, p, step=1e-2):
+        z2 = self.get_Z(T, p+step)
+        z1 = self.get_Z(T, p-step)
+        return (z2 - z1)/2/step
+
+    # Isothermal compressibililty
+    def get_isothermal_compressibility(self, T, p, **kwargs):
+
+        if 'Z' in kwargs:
+            Z = kwargs['Z']
+        else:
+            Z = self.get_Z(T, p)
+
+        Z1 = self.get_pdiff_Z_p_T(T, p)
+
+        return 1/p - 1/Z * Z1
