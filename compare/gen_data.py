@@ -19,9 +19,9 @@ Tc = 31.1 + 273.15 # K
 omega = 0.228 # acentric factor
 
 ig = eos.IdealGas(M, 'CO2')
-rk = eos.RK1(Tc, pc, M, 'CO2')
-srk = eos.SRK1(Tc, pc, M, omega, 'CO2')
-pr = eos.PR1(Tc, pc, M, omega, 'CO2')
+rk = eos.RK(Tc, pc, M, 'CO2')
+srk = eos.SRK(Tc, pc, M, omega, 'CO2')
+pr = eos.PR(Tc, pc, M, omega, 'CO2')
 lk = eos.LK(Tc, pc, M, omega, 'CO2')
 
 eqs = [ig, rk, srk, pr, lk]

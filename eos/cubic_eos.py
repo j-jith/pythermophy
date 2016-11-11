@@ -3,9 +3,7 @@ import numpy as np
 
 from cubic_parent import CubicEOS
 
-class RK1(CubicEOS):
-    '''https://www.e-education.psu.edu/png520/m11_p2.html
-    '''
+class RedlichKwong(CubicEOS):
 
     def __init__(self, Tc, pc, M, fluid):
 
@@ -17,7 +15,7 @@ class RK1(CubicEOS):
         self.a0 = 0.42748 * self.R**2 * self.T_crit**2 / self.p_crit
         b1 = 0.08664 * self.R * self.T_crit / self.p_crit
 
-        super(RK1, self).__init__(b1, 0., b1, 0., M, fluid)
+        super(RedlichKwong, self).__init__(b1, 0., b1, 0., M, fluid)
 
     def get_a(self, T):
         Tr = T/self.T_crit
@@ -32,9 +30,7 @@ class RK1(CubicEOS):
         return 0.75*self.a0/T**2/Tr**0.5
 
 
-class SRK1(CubicEOS):
-    '''https://www.e-education.psu.edu/png520/m11_p2.html
-    '''
+class SoaveRedlichKwong(CubicEOS):
 
     def __init__(self, Tc, pc, M, omega, fluid):
 
@@ -48,7 +44,7 @@ class SRK1(CubicEOS):
         b1 = 0.08664 * self.R * self.T_crit / self.p_crit
         self.kappa = 0.48508 + 1.55171*self.acentric - 0.15613*self.acentric**2
 
-        super(SRK1, self).__init__(b1, 0., b1, 0., M, fluid)
+        super(SoaveRedlichKwong, self).__init__(b1, 0., b1, 0., M, fluid)
 
     def get_a(self, T):
         Tr = T/self.T_crit
@@ -66,9 +62,7 @@ class SRK1(CubicEOS):
         return (0.5*self.a0*self.kappa**2/T**2)*Tr + (0.5*self.a0*self.kappa/T**2)*Tr**0.5 * alpha0
 
 
-class PR1(CubicEOS):
-    '''https://www.e-education.psu.edu/png520/m11_p2.html
-    '''
+class PengRobinson(CubicEOS):
 
     def __init__(self, Tc, pc, M, omega, fluid):
 
@@ -82,7 +76,7 @@ class PR1(CubicEOS):
         b1 = 0.07780 * self.R * self.T_crit / self.p_crit
         self.kappa = 0.37464 + 1.54226*self.acentric - 0.26992*self.acentric**2
 
-        super(PR1, self).__init__(b1, 0., 2*b1, -b1**2, M, fluid)
+        super(PengRobinson, self).__init__(b1, 0., 2*b1, -b1**2, M, fluid)
 
     def get_a(self, T):
         Tr = T/self.T_crit
