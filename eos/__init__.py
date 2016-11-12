@@ -1,3 +1,5 @@
+from fluid import Fluid
+
 #from parent_class import EOS
 from ideal_gas import IdealGas
 

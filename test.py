@@ -11,16 +11,19 @@ T_0 = 328.79 # [K]
 p_0 = np.linspace(1e6, 20e6, 10) # [Pa]
 
 # CO2 properties
-M = 44.01e-3 # kg/mol
-pc = 7.38e6 # Pa
-Tc = 31.1 + 273.15 # K
-omega = 0.228 # acentric factor
+#M = 44.01e-3 # kg/mol
+#pc = 7.38e6 # Pa
+#Tc = 31.1 + 273.15 # K
+#omega = 0.228 # acentric factor
 
-ig = eos.IdealGas(M, 'CO2')
-rk = eos.RK(Tc, pc, M, 'CO2')
-srk = eos.SRK(Tc, pc, M, omega, 'CO2')
-pr = eos.PR(Tc, pc, M, omega, 'CO2')
-lk = eos.LK(Tc, pc, M, omega, 'CO2')
+fluid = eos.Fluid.init_from_file('fluids/CO2')
+M = fluid.molar_mass
+
+ig = eos.IdealGas(fluid)
+rk = eos.RK(fluid)
+srk = eos.SRK(fluid)
+pr = eos.PR(fluid)
+lk = eos.LK(fluid)
 
 i = -1
 

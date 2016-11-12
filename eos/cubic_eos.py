@@ -5,17 +5,15 @@ from cubic_parent import CubicEOS
 
 class RedlichKwong(CubicEOS):
 
-    def __init__(self, Tc, pc, M, fluid):
+    def __init__(self, fluid):
 
-        self.p_crit = pc # Pa
-        self.T_crit = Tc # K
-        self.molar_mass = M # kg/mol
-        self.R_sp = self.R/M
+        self.p_crit = fluid.p_crit # Pa
+        self.T_crit = fluid.T_crit # K
 
         self.a0 = 0.42748 * self.R**2 * self.T_crit**2 / self.p_crit
         b1 = 0.08664 * self.R * self.T_crit / self.p_crit
 
-        super(RedlichKwong, self).__init__(b1, 0., b1, 0., M, fluid)
+        super(RedlichKwong, self).__init__(b1, 0., b1, 0., fluid)
 
     def get_a(self, T):
         Tr = T/self.T_crit
@@ -32,19 +30,17 @@ class RedlichKwong(CubicEOS):
 
 class SoaveRedlichKwong(CubicEOS):
 
-    def __init__(self, Tc, pc, M, omega, fluid):
+    def __init__(self, fluid):
 
-        self.acentric = omega
-        self.p_crit = pc # Pa
-        self.T_crit = Tc # K
-        self.molar_mass = M # kg/mol
-        self.R_sp = self.R/M
+        self.acentric = fluid.acentric
+        self.p_crit = fluid.p_crit # Pa
+        self.T_crit = fluid.T_crit # K
 
         self.a0 = 0.42748 * self.R**2 * self.T_crit**2 / self.p_crit
         b1 = 0.08664 * self.R * self.T_crit / self.p_crit
         self.kappa = 0.48508 + 1.55171*self.acentric - 0.15613*self.acentric**2
 
-        super(SoaveRedlichKwong, self).__init__(b1, 0., b1, 0., M, fluid)
+        super(SoaveRedlichKwong, self).__init__(b1, 0., b1, 0., fluid)
 
     def get_a(self, T):
         Tr = T/self.T_crit
@@ -64,19 +60,17 @@ class SoaveRedlichKwong(CubicEOS):
 
 class PengRobinson(CubicEOS):
 
-    def __init__(self, Tc, pc, M, omega, fluid):
+    def __init__(self, fluid):
 
-        self.acentric = omega
-        self.p_crit = pc # Pa
-        self.T_crit = Tc # K
-        self.molar_mass = M # kg/mol
-        self.R_sp = self.R/M
+        self.acentric = fluid.acentric
+        self.p_crit = fluid.p_crit # Pa
+        self.T_crit = fluid.T_crit # K
 
         self.a0 = 0.45724 * self.R**2 * self.T_crit**2 / self.p_crit
         b1 = 0.07780 * self.R * self.T_crit / self.p_crit
         self.kappa = 0.37464 + 1.54226*self.acentric - 0.26992*self.acentric**2
 
-        super(PengRobinson, self).__init__(b1, 0., 2*b1, -b1**2, M, fluid)
+        super(PengRobinson, self).__init__(b1, 0., 2*b1, -b1**2, fluid)
 
     def get_a(self, T):
         Tr = T/self.T_crit

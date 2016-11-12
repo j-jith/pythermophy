@@ -2,12 +2,14 @@ from __future__ import division, print_function
 
 class EOS(object):
 
+    # Universal gas constant
     R = 8.3144598 # J/K/mol
 
-    def __init__(self, M, fluid):
-        self.molar_mass = M
+    def __init__(self, fluid):
         self.fluid = fluid
-        self.R_sp = self.R/M
+        self.molar_mass = fluid.molar_mass
+        self.R_sp = self.R/self.molar_mass
+        self.ideal_cp_coeffs = fluid.ideal_cp_coeffs
 
     def get_Z(self, T, p):
         return 1.
@@ -26,18 +28,20 @@ class EOS(object):
         '''
 
         cp = 0.
+        for i, c_i in enumerate(self.ideal_cp_coeffs):
+            cp = cp + c_i*T**i
 
-        try:
-            if self.fluid=='CO2':
+        # try:
+        #     if self.fluid=='CO2':
 
-                c = [22.26, 5.981e-2, -3.501e-5, 7.469e-9]
-                for i, c_i in enumerate(c):
-                    cp = cp + c_i*T**i
+        #         c = [22.26, 5.981e-2, -3.501e-5, 7.469e-9]
+        #         for i, c_i in enumerate(c):
+        #             cp = cp + c_i*T**i
 
-            else:
-                raise ValueError('Ideal gas Cp for fluid "{}" not implemented'.format(self.fluid))
-        except ValueError as err:
-            print(err)
+        #     else:
+        #         raise ValueError('Ideal gas Cp for fluid "{}" not implemented'.format(self.fluid))
+        # except ValueError as err:
+        #     print(err)
 
         return cp
 

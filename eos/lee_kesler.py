@@ -28,14 +28,12 @@ class LeeKesler(EOS):
 
     acentric_r = 0.3978
 
-    def __init__(self, Tc, pc, M, omega, fluid):
+    def __init__(self, fluid):
 
-        super(LeeKesler, self).__init__(M, fluid)
-        self.acentric = omega
-        self.p_crit = pc # Pa
-        self.T_crit = Tc # K
-        self.molar_mass = M # kg/mol
-        self.R_sp = self.R/M
+        super(LeeKesler, self).__init__(fluid)
+        self.acentric = fluid.acentric
+        self.p_crit = fluid.p_crit # Pa
+        self.T_crit = fluid.T_crit # K
 
     def get_reduced_volume(self, Tr, pr, fluid='simple'):
 
@@ -63,7 +61,10 @@ class LeeKesler(EOS):
         result = spo.root(objfun, init_vol, method='lm')
         #print(result)
 
-        return result.x
+        if len(result.x) == 1:
+            return result.x[0]
+        else:
+            return result.x
 
     def get_Z(self, T, p):
 
@@ -137,14 +138,14 @@ class LeeKesler(EOS):
 
         return self.R*T*(z-1) + u
 
-    def get_departure_cp(self, T, p, step=1e-2, **kwargs):
+    def get_departure_cp(self, T, p, step=1e-3, **kwargs):
 
         h2 = self.get_departure_enthalpy(T+step, p, **kwargs)
         h1 = self.get_departure_enthalpy(T-step, p, **kwargs)
 
         return (h2 - h1)/2/step
 
-    def get_departure_cv(self, T, p, step=1e-2, **kwargs):
+    def get_departure_cv(self, T, p, step=1e-3, **kwargs):
         Tr = T/self.T_crit
         pr = p/self.p_crit
 
@@ -156,7 +157,7 @@ class LeeKesler(EOS):
 
         return (u2 - u1)/2/step
 
-    def get_pdiff_Z_p_T(self, T, p, step=1e-2):
+    def get_pdiff_Z_p_T(self, T, p, step=1e-3):
         z2 = self.get_Z(T, p+step)
         z1 = self.get_Z(T, p-step)
         return (z2 - z1)/2/step

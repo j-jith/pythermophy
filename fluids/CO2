@@ -1,0 +1,6 @@
+name: CO2
+molar_mass: 44.01e-3
+T_crit: 304.25
+p_crit: 7.38e+6
+ideal_cp_coeffs: [22.26, 5.981e-2, -3.501e-5, 7.469e-9]
+acentric: 0.228

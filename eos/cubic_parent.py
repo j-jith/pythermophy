@@ -6,12 +6,12 @@ from parent_class import EOS
 
 class CubicEOS(EOS):
 
-    def __init__(self, b, c, d, e, M, fluid):
+    def __init__(self, b, c, d, e, fluid):
 
         self.b = b; self.c = c
         self.d = d; self.e = e
 
-        super(CubicEOS, self).__init__(M, fluid)
+        super(CubicEOS, self).__init__(fluid)
 
     def get_a(self, T):
         '''Temperature dependent coefficient "a". This function
