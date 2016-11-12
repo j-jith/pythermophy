@@ -1,6 +1,18 @@
+# Name of the fluid
 name: CO2
+
+# Molar mass [kg/mol]
 molar_mass: 44.01e-3
+
+# Critical temperature [K]
 T_crit: 304.25
+
+# Critical pressure [Pa]
 p_crit: 7.38e+6
-ideal_cp_coeffs: [22.26, 5.981e-2, -3.501e-5, 7.469e-9]
+
+# Acentric factor [dimensionless]
 acentric: 0.228
+
+# Cp = a + b*T + c*T^2 + d*T^3 [J/mol/K]
+ideal_cp_coeffs: [22.26, 5.981e-2, -3.501e-5, 7.469e-9]
+

@@ -6,6 +6,18 @@ from cubic_parent import CubicEOS
 class RedlichKwong(CubicEOS):
 
     def __init__(self, fluid):
+        """
+        Redlich-Kwong equation of state
+        For details see: https://www.e-education.psu.edu/png520/m10_p4.html
+
+        Parameters
+        ----------
+        fluid - A Fluid class object
+
+        Returns
+        -------
+        An equation of state object
+        """
 
         self.p_crit = fluid.p_crit # Pa
         self.T_crit = fluid.T_crit # K
@@ -31,6 +43,18 @@ class RedlichKwong(CubicEOS):
 class SoaveRedlichKwong(CubicEOS):
 
     def __init__(self, fluid):
+        """
+        Soave-Redlich-Kwong equation of state
+        For details see: https://www.e-education.psu.edu/png520/m10_p5.html
+
+        Parameters
+        ----------
+        fluid - A Fluid class object
+
+        Returns
+        -------
+        An equation of state object
+        """
 
         self.acentric = fluid.acentric
         self.p_crit = fluid.p_crit # Pa
@@ -61,6 +85,18 @@ class SoaveRedlichKwong(CubicEOS):
 class PengRobinson(CubicEOS):
 
     def __init__(self, fluid):
+        """
+        Peng-Robinson equation of state
+        For details see: https://www.e-education.psu.edu/png520/m11_p2.html
+
+        Parameters
+        ----------
+        fluid - A Fluid class object
+
+        Returns
+        -------
+        An equation of state object
+        """
 
         self.acentric = fluid.acentric
         self.p_crit = fluid.p_crit # Pa

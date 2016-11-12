@@ -29,6 +29,19 @@ class LeeKesler(EOS):
     acentric_r = 0.3978
 
     def __init__(self, fluid):
+        """
+        Lee-Kesler equation of state
+        For details see: Chemical Engineering Thermodynamics, Y.V.C. Rao, 1997, University Press (India), pp.79
+        https://books.google.co.in/books?id=GjlO9MA9edUC&pg=PA79&dq=lee+kesler+method
+
+        Parameters
+        ----------
+        fluid - A Fluid class object
+
+        Returns
+        -------
+        An equation of state object
+        """
 
         super(LeeKesler, self).__init__(fluid)
         self.acentric = fluid.acentric
@@ -67,6 +80,17 @@ class LeeKesler(EOS):
             return result.x
 
     def get_Z(self, T, p):
+        """
+        Get the compressibility factor for a real gas
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Returns
+        -------
+        Compressibility factor [dimensionless]
+        """
 
         Tr = T/self.T_crit
         pr = p/self.p_crit
@@ -139,6 +163,24 @@ class LeeKesler(EOS):
         return self.R*T*(z-1) + u
 
     def get_departure_cp(self, T, p, step=1e-3, **kwargs):
+        """
+        Get the departure (difference between real gas and ideal gas) for isobaric specific heat capacity (C_p) [J/mol/K]
+
+        Parameters
+        ----------
+        T    - Temperature [K]
+        p    - Pressure [Pa]
+        step - Temperature step size for numerical differentiation [K]
+
+        Optional parameters
+        -------------------
+        Z - Compressibility factor [dimensionless]
+        This function recalculates compressibility factor if it is not given as an optional parameter
+
+        Returns
+        -------
+        Departure for isobaric specific heat capacity [J/mol/K]
+        """
 
         h2 = self.get_departure_enthalpy(T+step, p, **kwargs)
         h1 = self.get_departure_enthalpy(T-step, p, **kwargs)
@@ -146,6 +188,18 @@ class LeeKesler(EOS):
         return (h2 - h1)/2/step
 
     def get_departure_cv(self, T, p, step=1e-3, **kwargs):
+        """
+        Get the departure (difference between real gas and ideal gas) for isochoric specific heat capacity (C_p) [J/mol/K]
+
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Returns
+        -------
+        Departure for isochoric specific heat capacity [J/mol/K]
+        """
         Tr = T/self.T_crit
         pr = p/self.p_crit
 
@@ -164,6 +218,23 @@ class LeeKesler(EOS):
 
     # Isothermal compressibililty
     def get_isothermal_compressibility(self, T, p, **kwargs):
+        """
+        Get the isothermal compressibility of a real gas
+
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Optional parameters
+        -------------------
+        Z - Compressibility factor [dimensionless]
+        This function recalculates compressibility factor if it is not given as an optional parameter
+
+        Returns
+        -------
+        Isothermal compressibility [1/Pa]
+        """
 
         if 'Z' in kwargs:
             Z = kwargs['Z']

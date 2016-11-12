@@ -14,18 +14,24 @@ class CubicEOS(EOS):
         super(CubicEOS, self).__init__(fluid)
 
     def get_a(self, T):
-        '''Temperature dependent coefficient "a". This function
-        has to be redefined in the child class'''
+        """
+        Temperature dependent coefficient "a". This function
+        has to be redefined in the child class
+        """
         pass
 
     def get_diff_a_T(self, T):
-        '''Derivative of coefficient "a" wrt temperature. This function
-        has to be redefined in the child class'''
+        """
+        Derivative of coefficient "a" wrt temperature. This function
+        has to be redefined in the child class
+        """
         pass
 
     def get_double_diff_a_T(self, T):
-        '''Second derivative of coefficient "a" wrt temperature. This function
-        has to be redefined in the child class'''
+        """
+        Second derivative of coefficient "a" wrt temperature. This function
+        has to be redefined in the child class
+        """
         pass
 
     # Coefficients of the cubic polynomial for Z: A, B, C
@@ -70,6 +76,17 @@ class CubicEOS(EOS):
 
     # Solve the cubic equation for compressiblilty factor Z
     def get_Z(self, T, p):
+        """
+        Get the compressibility factor for a real gas
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Returns
+        -------
+        Compressibility factor [dimensionless]
+        """
 
         # a = self.get_a(T)
         # coeffs = [
@@ -125,6 +142,23 @@ class CubicEOS(EOS):
 
     # Departure function for Cp
     def get_departure_cp(self, T, p, **kwargs):
+        """
+        Get the departure (difference between real gas and ideal gas) for isobaric specific heat capacity (C_p) [J/mol/K]
+
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Optional parameters
+        -------------------
+        Z - Compressibility factor [dimensionless]
+        This function recalculates compressibility factor if it is not given as an optional parameter
+
+        Returns
+        -------
+        Departure for isobaric specific heat capacity [J/mol/K]
+        """
         if 'Z' in kwargs:
             Z = kwargs['Z']
         else:
@@ -144,6 +178,23 @@ class CubicEOS(EOS):
 
     # Departure function for Cv
     def get_departure_cv(self, T, p, **kwargs):
+        """
+        Get the departure (difference between real gas and ideal gas) for isochoric specific heat capacity (C_p) [J/mol/K]
+
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Optional parameters
+        -------------------
+        Z - Compressibility factor [dimensionless]
+        This function recalculates compressibility factor if it is not given as an optional parameter
+
+        Returns
+        -------
+        Departure for isochoric specific heat capacity [J/mol/K]
+        """
         if 'Z' in kwargs:
             Z = kwargs['Z']
         else:
@@ -158,6 +209,23 @@ class CubicEOS(EOS):
 
     # Isothermal compressibililty
     def get_isothermal_compressibility(self, T, p, **kwargs):
+        """
+        Get the isothermal compressibility of a real gas
+
+        Parameters
+        ----------
+        T - Temperature [K]
+        p - Pressure [Pa]
+
+        Optional parameters
+        -------------------
+        Z - Compressibility factor [dimensionless]
+        This function recalculates compressibility factor if it is not given as an optional parameter
+
+        Returns
+        -------
+        Isothermal compressibility [1/Pa]
+        """
 
         if 'Z' in kwargs:
             Z = kwargs['Z']
