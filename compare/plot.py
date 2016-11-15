@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 from customize_matplotlib import *
 customize_matplotlib()
 
-#T = 40.0
-# = 60.0
-#T = 80.0
-T = 100.0
-
+T = 40.0
 show_legend = True
+# show_legend = False
+# T = 60.0
+# T = 80.0
+# T = 100.0
+
 
 rho = np.loadtxt('data/rho_{}.txt'.format(T))
 c = np.loadtxt('data/c_{}.txt'.format(T))

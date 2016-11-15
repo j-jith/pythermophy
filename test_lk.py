@@ -20,17 +20,17 @@ lk = eos.LK(fluid)
 
 i = -1
 
-print('Cp')
-print(lk.get_cp(T_0, p_0[i], step=1e-2)/M)
-print(lk.get_cp(T_0, p_0[i], step=1e-3)/M)
-print(lk.get_cp(T_0, p_0[i], step=1e-4)/M)
-
-print('Cv')
-print(lk.get_cv(T_0, p_0[i], step=1e-2)/M)
-print(lk.get_cv(T_0, p_0[i], step=1e-3)/M)
-print(lk.get_cv(T_0, p_0[i], step=1e-4)/M)
-
-print('dZ/dp at const. T')
-print(lk.get_pdiff_Z_p_T(T_0, p_0[i], step=1e-2)/M)
-print(lk.get_pdiff_Z_p_T(T_0, p_0[i], step=1e-3)/M)
-print(lk.get_pdiff_Z_p_T(T_0, p_0[i], step=1e-4)/M)
+# print('Cp')
+# print(lk.get_cp(T_0, p_0[i], step=1e-2)/M)
+# print(lk.get_cp(T_0, p_0[i], step=1e-3)/M)
+# print(lk.get_cp(T_0, p_0[i], step=1e-4)/M)
+# 
+# print('Cv')
+# print(lk.get_cv(T_0, p_0[i], step=1e-2)/M)
+# print(lk.get_cv(T_0, p_0[i], step=1e-3)/M)
+# print(lk.get_cv(T_0, p_0[i], step=1e-4)/M)
+# 
+# print('dZ/dp at const. T')
+# print(lk.get_pdiff_Z_p_T(T_0, p_0[i], step=1e-2)/M)
+# print(lk.get_pdiff_Z_p_T(T_0, p_0[i], step=1e-3)/M)
+# print(lk.get_pdiff_Z_p_T(T_0, p_0[i], step=1e-4)/M)
