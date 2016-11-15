@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 import sys
 sys.path.append('../')
-import eos
+import pythermophy as eos
 
 ### Mean temperature of fluid
 T_0 = np.array([40, 60, 80, 100]) + 273.15 # [K]

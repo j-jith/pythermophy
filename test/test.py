@@ -3,7 +3,9 @@ import numpy as np
 from CoolProp.CoolProp import PropsSI
 import matplotlib.pyplot as plt
 
-import eos
+import sys
+sys.path.append('../')
+import pythermophy as eos
 
 ### Mean temperature of fluid
 T_0 = 328.79 # [K]
@@ -16,7 +18,7 @@ p_0 = np.linspace(1e6, 20e6, 10) # [Pa]
 #Tc = 31.1 + 273.15 # K
 #omega = 0.228 # acentric factor
 
-fluid = eos.Fluid.init_from_file('fluids/CO2')
+fluid = eos.Fluid.init_from_file('../fluids/CO2')
 M = fluid.molar_mass
 
 ig = eos.IdealGas(fluid)
