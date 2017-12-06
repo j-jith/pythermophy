@@ -3,7 +3,7 @@ import numpy as np
 import scipy.optimize as spo
 from math import exp
 
-from parent_class import EOS
+from .parent_class import EOS
 
 class LeeKesler(EOS):
     '''https://books.google.co.in/books?id=GjlO9MA9edUC&pg=PA79&dq=lee+kesler+method

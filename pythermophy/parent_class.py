@@ -1,6 +1,12 @@
 from __future__ import division, print_function
 
 class EOS(object):
+    """
+    The parent equation of state (EOS) class. All the other EOS classes are
+    derived from this.
+
+    :param fluid: a :class:`~pythermophy.fluid.Fluid` instance
+    """
 
     # Universal gas constant
     R = 8.3144598 # J/K/mol
@@ -12,9 +18,28 @@ class EOS(object):
         self.ideal_cp_coeffs = fluid.ideal_cp_coeffs
 
     def get_Z(self, T, p):
+        """
+        Returns the compressibility factor of the fluid.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :return: compressibility factor
+        :rtype: float
+        """
         return 1.
 
     def get_rho(self, T, p, **kwargs):
+        """
+        Returns the density of the fluid.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+        """
         if 'Z' in kwargs:
             z = kwargs['Z']
         else:
@@ -24,16 +49,14 @@ class EOS(object):
 
     def get_ideal_cp(self, T):
         """
-        Get the ideal gas isobaric specific heat capacity (C_p^0) in J/mol/K.
+        Returns the ideal gas isobaric specific heat capacity (:math:`c_p^0`) in J/mol/K.
         See http://www.wiley.com/college/moran/CL_0471465704_S/user/tables/TABLE3S/table3sframe.html
 
-        Parameters
-        ----------
-        T - Temperature [K]
+        :param T: temperature (K)
+        :type T: float
 
-        Returns
-        -------
-        Ideal gas isobaric specific heat capacity (C_p^0) [J/mol/K].
+        :return: ideal gas isobaric specific heat capacity (J/mol/K)
+        :rtype: float
         """
 
         cp = 0.
@@ -56,105 +79,103 @@ class EOS(object):
 
     def get_ideal_cv(self, T):
         """
-        Get the ideal gas isochoric specific heat capacity (C_v^0) in J/mol/K
+        Returns the ideal gas isochoric specific heat capacity (:math:`c_v^0`)
+        in J/mol/K.
 
-        Parameters
-        ----------
-        T - Temperature [K]
+        :param T: temperature (K)
+        :type T: float
 
-        Returns
-        -------
-        Ideal gas isochoric specific heat capacity (C_v^0) [J/mol/K]
+        :return: ideal gas isochoric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         return self.get_ideal_cp(T) - self.R
 
     def get_departure_cp(self, T, p):
         """
-        Get the departure (difference between real gas and ideal gas) for isobaric specific heat capacity (C_p) [J/mol/K]
+        Returns the departure (difference between real gas and ideal gas) for
+        isobaric specific heat capacity (:math:`c_p`) in J/mol/K.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Departure for isobaric specific heat capacity [J/mol/K]
+        :return: departure for isobaric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         return 0.
 
     def get_departure_cv(self, T, p):
         """
-        Get the departure (difference between real gas and ideal gas) for isochoric specific heat capacity (C_p) [J/mol/K]
+        Returns the departure (difference between real gas and ideal gas) for
+        isochoric specific heat capacity (:math:`c_v`) in J/mol/K.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Departure for isochoric specific heat capacity [J/mol/K]
+        :return: departure for isochoric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         return 0.
 
     def get_cp(self, T, p, **kwargs):
         """
-        Get the real gas isobaric specific heat capacity (C_p) [J/mol/K]
+        Returns the real gas isobaric specific heat capacity (:math:`c_p`) in
+        J/mol/K.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Real gas isobaric specific heat capacity [J/mol/K]
+        :return: isobaric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         return self.get_ideal_cp(T) + self.get_departure_cp(T, p, **kwargs)
 
     def get_cv(self, T, p, **kwargs):
         """
-        Get the real gas isochoric specific heat capacity (C_p) [J/mol/K]
+        Returns the real gas isochoric specific heat capacity (:math:`c_v`) in
+        J/mol/K.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Real gas isochoric specific heat capacity [J/mol/K]
+        :return: isochoric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         return self.get_ideal_cv(T) + self.get_departure_cv(T, p, **kwargs)
 
     def get_adiabatic_index(self, T, p, **kwargs):
         """
-        Get the adiabatic index (ratio between isobaric and isochoric heat capacities) for a real gas
+        Returns the adiabatic index (ratio between isobaric and isochoric heat
+        capacities) for a real gas.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Adiabatic index [dimensionless]
+        :return: adiabatic index (dimensionless)
+        :rtype: float
         """
         return self.get_cp(T, p, **kwargs)/self.get_cv(T, p, **kwargs)
 
     def get_speed_of_sound(self, T, p, **kwargs):
         """
-        Get the speed of sound in a real gas
+        Returns the speed of sound in a real gas.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        --------
-        Speed of sound [m/s]
+        :return: speed of sound (m/s)
+        :rtype: float
         """
         if 'Z' in kwargs:
             z = kwargs['Z']

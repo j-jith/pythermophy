@@ -10,6 +10,9 @@ from .cubic_eos import PengRobinson
 from .lee_kesler import LeeKesler
 
 # Shorter aliases for class names
+class IG(IdealGas):
+    pass
+
 class RK(RedlichKwong):
     pass
 

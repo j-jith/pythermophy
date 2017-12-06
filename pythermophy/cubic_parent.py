@@ -2,7 +2,7 @@ from __future__ import print_function, division
 import numpy as np
 from math import log
 
-from parent_class import EOS
+from .parent_class import EOS
 
 class CubicEOS(EOS):
 

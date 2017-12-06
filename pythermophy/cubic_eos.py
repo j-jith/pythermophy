@@ -1,23 +1,21 @@
 from __future__ import print_function, division
 import numpy as np
 
-from cubic_parent import CubicEOS
+from .cubic_parent import CubicEOS
 
 class RedlichKwong(CubicEOS):
+    """
+    Redlich-Kwong equation of state.
+    For details refer to https://www.e-education.psu.edu/png520/m10_p4.html
+
+    :param fluid: a :class:`Fluid` instance
+    :type fluid: :class:`Fluid`
+
+    :return: an :class:`EOS` instance
+    :rtype: :class:`EOS`
+    """
 
     def __init__(self, fluid):
-        """
-        Redlich-Kwong equation of state
-        For details see: https://www.e-education.psu.edu/png520/m10_p4.html
-
-        Parameters
-        ----------
-        fluid - A Fluid class object
-
-        Returns
-        -------
-        An equation of state object
-        """
 
         self.p_crit = fluid.p_crit # Pa
         self.T_crit = fluid.T_crit # K
