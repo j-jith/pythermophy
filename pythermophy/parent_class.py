@@ -6,6 +6,8 @@ class EOS(object):
     derived from this.
 
     :param fluid: a :class:`~pythermophy.fluid.Fluid` instance
+
+    :return: a :class:`EOS` instance
     """
 
     # Universal gas constant
@@ -92,7 +94,7 @@ class EOS(object):
 
     def get_departure_cp(self, T, p):
         """
-        Returns the departure (difference between real gas and ideal gas) for
+        Returns the departure (difference between real gas and ideal gas) of
         isobaric specific heat capacity (:math:`c_p`) in J/mol/K.
 
         :param T: temperature (K)
@@ -107,7 +109,7 @@ class EOS(object):
 
     def get_departure_cv(self, T, p):
         """
-        Returns the departure (difference between real gas and ideal gas) for
+        Returns the departure (difference between real gas and ideal gas) of
         isochoric specific heat capacity (:math:`c_v`) in J/mol/K.
 
         :param T: temperature (K)

@@ -14,13 +14,17 @@ To Do
 
   - [x] parent class
 
-  - [ ] cubic parent
+  - [x] lee kesler
 
-  - [ ] cubic eos
+  - [x] cubic parent
 
-  - [ ] lee kesler
+  - [x] cubic eos
 
-  - [ ] References
+  - [ ] Ideal gas theory
+
+  - [ ] Cubic EOS theory (only in parent)
+
+  - [ ] Lee-Kesler theory
 
 - [ ] README
 

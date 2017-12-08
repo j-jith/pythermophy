@@ -5,6 +5,30 @@ from math import log
 from .parent_class import EOS
 
 class CubicEOS(EOS):
+    """
+    Parent class from which other cubic equations of state are derived.
+
+    The equation of state is expressed as:
+
+    .. math::
+
+        p = \\frac{RT}{v - b + c} - \\frac{a(T)}{v^2 + dv + e}
+
+    where :math:`(p, v, T)` are the pressure, specific volume, and temperature
+    respectively. :math:`R` is the specific gas constant, and :math:`(a(T), b,
+    c, d, e)` are the coefficients of the cubic equation of state.
+
+    :param b: coefficient :math:`b`
+    :type b: float
+    :param c: coefficient :math:`c`
+    :type c: float
+    :param d: coefficient :math:`d`
+    :type d: float
+    :param e: coefficient :math:`e`
+    :type e: float
+
+    :return: a :class:`~pythrmophy.parent_class.EOS` instance
+    """
 
     def __init__(self, b, c, d, e, fluid):
 
@@ -15,61 +39,166 @@ class CubicEOS(EOS):
 
     def get_a(self, T):
         """
-        Temperature dependent coefficient "a". This function
-        has to be redefined in the child class
+        Returns the temperature dependent coefficient :math:`a(T)`.
+
+        Function should be redefined in the child class.
         """
         pass
 
     def get_diff_a_T(self, T):
         """
-        Derivative of coefficient "a" wrt temperature. This function
-        has to be redefined in the child class
+        Returns the derivative of coefficient :math:`a(T)` wrt. temperature :math:`T`.
+
+        Function should be redefined in the child class.
         """
         pass
 
     def get_double_diff_a_T(self, T):
         """
-        Second derivative of coefficient "a" wrt temperature. This function
-        has to be redefined in the child class
+        Returns the second derivative of coefficient :math:`a(T)` wrt. temperature :math:`T`.
+
+        Function should be redefined in the child class.
         """
         pass
 
     # Coefficients of the cubic polynomial for Z: A, B, C
     # Z^3 + A*Z^2 + B*Z + C = 0
     def get_A(self, T, p):
+        """
+        Returns the coefficient :math:`A` of the cubic polynomial of
+        compressiblity factor given by :math:`Z^3 + A Z^2 + B Z + C = 0`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :return: :math:`A`
+        :rtype: float
+        """
         return (-self.R*T - self.b*p + self.c*p + self.d*p)/(self.R*T)
 
     def get_B(self, T, p):
+        """
+        Returns the coefficient :math:`B` of the cubic polynomial of
+        compressiblity factor given by :math:`Z^3 + A Z^2 + B Z + C = 0`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :return: :math:`B`
+        :rtype: float
+        """
         a = self.get_a(T)
         return (-self.R*T*self.d*p + a*p - self.b*self.d*p**2 + self.c*self.d*p**2 + self.e*p**2)/(self.R**2*T**2)
 
     def get_C(self, T, p):
+        """
+        Returns the coefficient :math:`C` of the cubic polynomial of
+        compressiblity factor given by :math:`Z^3 + A Z^2 + B Z + C = 0`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :return: :math:`C`
+        :rtype: float
+        """
         a = self.get_a(T)
         return (-self.R*T*self.e*p**2 - a*self.b*p**2 + a*self.c*p**2 - self.b*self.e*p**3 + self.c*self.e*p**3)/(self.R**3*T**3)
 
     # Partial derivatives of A, B and C wrt. T at constant p
     def get_pdiff_A_T_p(self, T, p):
+        """
+        Returns the partial derivative of coefficient :math:`A` wrt. :math:`T`
+        at constant :math:`p`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :rtype: float
+        """
         return p*(self.b - self.c - self.d)/(self.R*T**2)
 
     def get_pdiff_B_T_p(self, T, p):
+        """
+        Returns the partial derivative of coefficient :math:`B` wrt. :math:`T`
+        at constant :math:`p`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :rtype: float
+        """
         a = self.get_a(T)
         dadT = self.get_diff_a_T(T)
         return p*(self.R*T*self.d + T*dadT + 2*self.b*self.d*p - 2*self.c*self.d*p - 2*self.e*p - 2*a)/(self.R**2*T**3)
 
     def get_pdiff_C_T_p(self, T, p):
+        """
+        Returns the partial derivative of coefficient :math:`C` wrt. :math:`T`
+        at constant :math:`p`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :rtype: float
+        """
         a = self.get_a(T)
         dadT = self.get_diff_a_T(T)
         return p**2*(2*self.R*T*self.e + T*(-self.b + self.c)*dadT + 3*self.b*self.e*p + 3*self.b*a - 3*self.c*self.e*p - 3*self.c*a)/(self.R**3*T**4)
 
     # Partial derivatives of A, B and C wrt. p at constant T
     def get_pdiff_A_p_T(self, T, p):
+        """
+        Returns the partial derivative of coefficient :math:`A` wrt. :math:`p`
+        at constant :math:`T`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :rtype: float
+        """
         return (-self.b + self.c + self.d)/(self.R*T)
 
     def get_pdiff_B_p_T(self, T, p):
+        """
+        Returns the partial derivative of coefficient :math:`B` wrt. :math:`p`
+        at constant :math:`T`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :rtype: float
+        """
         a = self.get_a(T)
         return (-self.R*T*self.d - 2*self.b*self.d*p + 2*self.c*self.d*p + 2*self.e*p + a)/(self.R**2*T**2)
 
     def get_pdiff_C_p_T(self, T, p):
+        """
+        Returns the partial derivative of coefficient :math:`C` wrt. :math:`p`
+        at constant :math:`T`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :rtype: float
+        """
         a = self.get_a(T)
         return p*(-2*self.R*T*self.e - 3*self.b*self.e*p - 2*self.b*a + 3*self.c*self.e*p + 2*self.c*a)/(self.R**3*T**3)
 
@@ -77,17 +206,16 @@ class CubicEOS(EOS):
     # Solve the cubic equation for compressiblilty factor Z
     def get_Z(self, T, p):
         """
-        Get the compressibility factor for a real gas
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        Returns the compressibility factor of a real gas.
 
-        Returns
-        -------
-        Compressibility factor [dimensionless]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+
+        :return: compressibility factor
+        :rtype: float
         """
-
         # a = self.get_a(T)
         # coeffs = [
         #         1,
@@ -108,6 +236,19 @@ class CubicEOS(EOS):
 
     # Partial derivative of Z wrt T at constant p
     def get_pdiff_Z_T_p(self, T, p, **kwargs):
+        """
+        Returns the partial derivative of :math:`Z` wrt. :math:`T` at constant
+        :math:`p`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :keyword Z: (optional kwarg) compressibility factor at (T, p). Computed
+            by :func:`get_Z` if not provided.
+        :type Z: float
+
+        :rtype: float
+        """
         if 'Z' in kwargs:
             Z = kwargs['Z']
         else:
@@ -125,6 +266,19 @@ class CubicEOS(EOS):
 
     # Partial derivative of Z wrt p at constant T
     def get_pdiff_Z_p_T(self, T, p, **kwargs):
+        """
+        Returns the partial derivative of :math:`Z` wrt. :math:`p` at constant
+        :math:`T`.
+
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :keyword Z: (optional kwarg) compressibility factor at (T, p). Computed
+            by :func:`get_Z` if not provided.
+        :type Z: float
+
+        :rtype: float
+        """
         if 'Z' in kwargs:
             Z = kwargs['Z']
         else:
@@ -143,21 +297,19 @@ class CubicEOS(EOS):
     # Departure function for Cp
     def get_departure_cp(self, T, p, **kwargs):
         """
-        Get the departure (difference between real gas and ideal gas) for isobaric specific heat capacity (C_p) [J/mol/K]
+        Returns the departure (difference between real gas and ideal gas) of
+        isobaric specific heat capacity :math:`c_p` (J/mol/K)
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+        :keyword Z: (optional kwarg) compressibility factor at (T, p). Computed
+            by :func:`get_Z` if not provided.
+        :type Z: float
 
-        Optional parameters
-        -------------------
-        Z - Compressibility factor [dimensionless]
-        This function recalculates compressibility factor if it is not given as an optional parameter
-
-        Returns
-        -------
-        Departure for isobaric specific heat capacity [J/mol/K]
+        :return: departure of isobaric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         if 'Z' in kwargs:
             Z = kwargs['Z']
@@ -179,21 +331,19 @@ class CubicEOS(EOS):
     # Departure function for Cv
     def get_departure_cv(self, T, p, **kwargs):
         """
-        Get the departure (difference between real gas and ideal gas) for isochoric specific heat capacity (C_p) [J/mol/K]
+        Returns the departure (difference between real gas and ideal gas) for
+        isochoric specific heat capacity (:math:`c_v`) in J/mol/K.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+        :keyword Z: (optional kwarg) compressibility factor at (T, p). Computed
+            by :func:`get_Z` if not provided.
+        :type Z: float
 
-        Optional parameters
-        -------------------
-        Z - Compressibility factor [dimensionless]
-        This function recalculates compressibility factor if it is not given as an optional parameter
-
-        Returns
-        -------
-        Departure for isochoric specific heat capacity [J/mol/K]
+        :return: departure of isochoric specific heat capacity (J/mol/K)
+        :rtype: float
         """
         if 'Z' in kwargs:
             Z = kwargs['Z']
@@ -210,21 +360,15 @@ class CubicEOS(EOS):
     # Isothermal compressibililty
     def get_isothermal_compressibility(self, T, p, **kwargs):
         """
-        Get the isothermal compressibility of a real gas
+        Returns the isothermal compressibility of a real gas.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Optional parameters
-        -------------------
-        Z - Compressibility factor [dimensionless]
-        This function recalculates compressibility factor if it is not given as an optional parameter
-
-        Returns
-        -------
-        Isothermal compressibility [1/Pa]
+        :return: isothermal compressibility (1/Pa)
+        :rtype: float
         """
 
         if 'Z' in kwargs:

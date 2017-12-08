@@ -37,10 +37,26 @@ pythermophy\.ideal_gas module
     :undoc-members:
     :show-inheritance:
 
+pythermophy\.cubic_parent module
+--------------------------------
+
+.. automodule:: pythermophy.cubic_parent
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 pythermophy\.cubic_eos module
 -----------------------------
 
 .. automodule:: pythermophy.cubic_eos
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pythermophy\.lee_kesler module
+------------------------------
+
+.. automodule:: pythermophy.lee_kesler
     :members:
     :undoc-members:
     :show-inheritance:

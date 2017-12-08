@@ -6,10 +6,13 @@ from math import exp
 from .parent_class import EOS
 
 class LeeKesler(EOS):
-    '''https://books.google.co.in/books?id=GjlO9MA9edUC&pg=PA79&dq=lee+kesler+method
-       Chemical Engineering Thermodynamics, Y.V.C. Rao, 1997, University Press (India), pp.79
-    '''
+    """
+    Lee-Kesler equation of state.
 
+    :param fluid: a :class:`~pythermophy.fluid.Fluid` instance
+
+    :return: a :class:`~pythrmophy.parent_class.EOS` instance
+    """
     b1 = [0.1181193, 0.2026579]
     b2 = [0.265728, 0.331511]
     b3 = [0.154790, 0.027655]
@@ -49,6 +52,17 @@ class LeeKesler(EOS):
         self.T_crit = fluid.T_crit # K
 
     def get_B(self, Tr, fluid):
+        """
+        Returns :math:`B(T_r) = b_1 - b_2/T_r - b_3/T_r^2 - b_4/T_r^3`.
+
+        :param Tr: reduced temperature (:math:`T_r = T/T_c`)
+        :type Tr: float
+        :param fluid: specifies if the fluid is *simple* or *reference*
+        :type fluid: str
+
+        :return: :math:`B(T_r)`
+        :rtype: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -59,6 +73,17 @@ class LeeKesler(EOS):
         return self.b1[i] - self.b2[i]/Tr - self.b3[i]/Tr**2 - self.b4[i]/Tr**3
 
     def get_C(self, Tr, fluid):
+        """
+        Returns :math:`C(T_r) = c_1 - c_2/T_r + c_3/T_r^3`.
+
+        :param Tr: reduced temperature (:math:`T_r = T/T_c`)
+        :type Tr: float
+        :param fluid: specifies if the fluid is *simple* or *reference*
+        :type fluid: str
+
+        :return: :math:`C(T_r)`
+        :rtype: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -69,6 +94,17 @@ class LeeKesler(EOS):
         return self.c1[i] - self.c2[i]/Tr + self.c3[i]/Tr**3
 
     def get_D(self, Tr, fluid):
+        """
+        Returns :math:`D(T_r) = d_1 + c_2/T_r`.
+
+        :param Tr: reduced temperature (:math:`T_r = T/T_c`)
+        :type Tr: float
+        :param fluid: specifies if the fluid is *simple* or *reference*
+        :type fluid: str
+
+        :return: :math:`D(T_r)`
+        :rtype: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -79,7 +115,30 @@ class LeeKesler(EOS):
         return self.d1[i] + self.d2[i]/Tr
 
     def get_reduced_volume(self, Tr, pr, fluid, **kwargs):
+        """
+        Returns the reduced volume :math:`v_r`.
 
+        This is done by solving the following nonlinear equation:
+
+        .. math::
+
+            \\frac{p_r v_r}{T_r} = 1 + \\frac{B(T_r)}{v_r} + \\frac{C(T_r)}{v_r^2}
+            + \\frac{D(T_r)}{v_r^5} + \\frac{c_4}{T_r^3 v_r^2}
+            (\\beta + \\frac{\gamma}{v_r^2}) \exp(-\\frac{\gamma}{v_r^2})
+
+        :param Tr: reduced temperature (:math:`T_r = T/T_c`)
+        :type Tr: float
+        :param pr: reduced pressure (:math:`p_r = p/p_c`)
+        :type pr: float
+        :param fluid: specifies if the fluid is *simple* or *reference*
+        :type fluid: str
+        :keyword init_vol: (optional kwarg) initial guess for reduced volume to be used in the
+            nonlinear solver
+        :type init_vol: float
+
+        :return: reduced volume
+        :rtype: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -120,22 +179,21 @@ class LeeKesler(EOS):
 
     def get_Z(self, T, p, **kwargs):
         """
-        Get the compressibility factor for a real gas
+        Returns the compressibility factor of a real gas.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
+        :keyword init_vol: (optional kwarg) initial guess for
+            reduced volumes of ideal and reference fluids to be used in the
+            nonlinear equation solver in :func:`get_reduced_volume`. Should be
+            a list [v0, vr], where v0 is the inital guess for the simple fluid,
+            and vr is the initial guess for the reference fluid.
+        :type init_vol: list(float)
 
-        Optional parameters
-        -------------------
-        init_vol - Initial value for the non-linear solution of
-        the Lee-Kesler equation. Should be a list [v0, vr] of
-        "reduced" volumes of the simple and reference fluids, respectively.
-
-        Returns
-        -------
-        Compressibility factor [dimensionless]
+        :return: compressibility factor
+        :rtype: float
         """
 
         Tr = T/self.T_crit
@@ -161,6 +219,22 @@ class LeeKesler(EOS):
 
 
     def get_departure_cv_aux(self, Tr, pr, fluid, **kwargs):
+        """
+        Auxiliary function used by :func:`get_departure_cv`.
+
+        Computes the departure in isochoric specific heat capacity for *simple*
+        and *reference* fluids.
+
+        :param Tr: reduced temperature
+        :type Tr: float
+        :param pr: reduced pressure
+        :type pr: float
+        :param fluid: specifices if the fluid is *simple* or *reference*
+        :type fluid: str
+        :keyword Vr: (optional kwarg) reduced volume at (Tr, pr). If not
+            provided, :func:`get_reduced_volume` is used to compute it.
+        :type Vr: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -181,16 +255,16 @@ class LeeKesler(EOS):
 
     def get_departure_cv(self, T, p):
         """
-        Get the departure (difference between real gas and ideal gas) for isochoric specific heat capacity (C_v) [J/mol/K]
+        Returns the departure (difference between real gas and ideal gas) of
+        isochoric specific heat capacity :math:`c_v` (J/mol/K)
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Departure for isochoric specific heat capacity [J/mol/K]
+        :return: departure of isochoric specific heat capacity (J/mol/K)
+        :rtype: float
         """
 
         Tr = T/self.T_crit
@@ -206,6 +280,19 @@ class LeeKesler(EOS):
 
 
     def get_pdiff_pr_Tr_Vr(self, Tr, Vr, fluid):
+        """
+        Returns the partial derivative of :math:`p_r` wrt. :math:`T_r` at
+        constant :math:`v_r`.
+
+        :param Tr: reduced temperature
+        :type Tr: float
+        :param Vr: reduced volume
+        :type Vr: float
+        :param fluid: specifices if the fluid is *simple* or *reference*
+        :type fluid: str
+
+        :rtype: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -223,6 +310,19 @@ class LeeKesler(EOS):
         return pdiff
 
     def get_pdiff_pr_Vr_Tr(self, Tr, Vr, fluid):
+        """
+        Returns the partial derivative of :math:`p_r` wrt. :math:`V_r` at
+        constant :math:`T_r`.
+
+        :param Tr: reduced temperature
+        :type Tr: float
+        :param Vr: reduced volume
+        :type Vr: float
+        :param fluid: specifices if the fluid is *simple* or *reference*
+        :type fluid: str
+
+        :rtype: float
+        """
         if fluid=='reference':
             i = 1
         elif fluid=='simple':
@@ -244,16 +344,15 @@ class LeeKesler(EOS):
     # Isothermal compressibililty
     def get_isothermal_compressibility(self, T, p):
         """
-        Get the isothermal compressibility of a real gas
+        Returns the isothermal compressibility of a real gas.
 
-        Parameters
-        ----------
-        T - Temperature [K]
-        p - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Isothermal compressibility [1/Pa]
+        :return: isothermal compressibility (1/Pa)
+        :rtype: float
         """
 
         Tr = T/self.T_crit
@@ -274,6 +373,19 @@ class LeeKesler(EOS):
 
 
     def get_departure_cp_aux(self, Tr, pr, fluid):
+        """
+        Auxiliary function used by :func:`get_departure_cp`.
+
+        Computes the departure in isobaric specific heat capacity for *simple*
+        and *reference* fluids.
+
+        :param Tr: reduced temperature
+        :type Tr: float
+        :param pr: reduced pressure
+        :type pr: float
+        :param fluid: specifices if the fluid is *simple* or *reference*
+        :type fluid: str
+        """
 
         vr = self.get_reduced_volume(Tr, pr, fluid)
 
@@ -291,16 +403,16 @@ class LeeKesler(EOS):
 
     def get_departure_cp(self, T, p):
         """
-        Get the departure (difference between real gas and ideal gas) for isobaric specific heat capacity (C_p) [J/mol/K]
+        Returns the departure (difference between real gas and ideal gas) of
+        isobaric specific heat capacity :math:`c_p` (J/mol/K)
 
-        Parameters
-        ----------
-        T    - Temperature [K]
-        p    - Pressure [Pa]
+        :param T: temperature (K)
+        :type T: float
+        :param p: pressure (Pa)
+        :type p: float
 
-        Returns
-        -------
-        Departure for isobaric specific heat capacity [J/mol/K]
+        :return: departure of isobaric specific heat capacity (J/mol/K)
+        :rtype: float
         """
 
         Tr = T/self.T_crit
