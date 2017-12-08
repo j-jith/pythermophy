@@ -26,8 +26,9 @@ class CubicEOS(EOS):
     :type d: float
     :param e: coefficient :math:`e`
     :type e: float
+    :param fluid: a :class:`~pythermophy.fluid.Fluid` instance
 
-    :return: a :class:`~pythrmophy.parent_class.EOS` instance
+    :return: a :class:`~pythermophy.parent_class.EOS` instance
     """
 
     def __init__(self, b, c, d, e, fluid):
