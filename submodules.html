@@ -1,0 +1,1393 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Submodules &#8212; pythermophy 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Theory" href="theory.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="theory.html" title="Theory"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="theory.html"
+                        title="previous chapter">Theory</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="submodules">
+<h1>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-pythermophy.fluid">
+<span id="fluid"></span><h2>Fluid<a class="headerlink" href="#module-pythermophy.fluid" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.fluid.Fluid">
+<em class="property">class </em><code class="descclassname">pythermophy.fluid.</code><code class="descname">Fluid</code><span class="sig-paren">(</span><em>name</em>, <em>M</em>, <em>Tc</em>, <em>pc</em>, <em>acentric</em>, <em>cp_coeffs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.fluid.Fluid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class for representing the fluid you want to study.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – name of the fluid</li>
+<li><strong>M</strong> (<em>float</em>) – molar mass of the fluid (kg/mol)</li>
+<li><strong>Tc</strong> (<em>float</em>) – critical temperature of the fluid (K)</li>
+<li><strong>pc</strong> (<em>float</em>) – critical pressure of the fluid (Pa)</li>
+<li><strong>acentric</strong> (<em>float</em>) – acentric factor of the fluid (dimensionless)</li>
+<li><strong>cp_coeffs</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) – coefficients of the ideal gas isobaric heat capacity
+polynomial [a,b,c,d] <img class="math" src="_images/math/82fec197827c430de389e1211b68c102b0836f77.png" alt="c_p = a + bT + cT^2 + dT^3"/> (<img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> in
+J/mol/K)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="pythermophy.fluid.Fluid.init_from_file">
+<em class="property">classmethod </em><code class="descname">init_from_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.fluid.Fluid.init_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance by reading parameters from an
+input file.</p>
+<p>The input file must be a <code class="docutils literal"><span class="pre">yaml</span></code> file in the following format:</p>
+<div class="code yaml highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">CO2</span>   <span class="c1"># Name of the fluid</span>
+<span class="n">molar_mass</span><span class="p">:</span> <span class="mf">44.01e-3</span>    <span class="c1"># Molar mass [kg/mol]</span>
+<span class="n">T_crit</span><span class="p">:</span> <span class="mf">304.25</span>  <span class="c1"># Critical temperature [K]</span>
+<span class="n">p_crit</span><span class="p">:</span> <span class="mf">7.38e+6</span> <span class="c1"># Critical pressure [Pa]</span>
+<span class="n">acentric</span><span class="p">:</span> <span class="mf">0.228</span> <span class="c1"># Acentric factor [dimensionless]</span>
+<span class="n">ideal_cp_coeffs</span><span class="p">:</span> <span class="p">[</span><span class="mf">22.26</span><span class="p">,</span> <span class="mf">5.981e-2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.501e-5</span><span class="p">,</span> <span class="mf">7.469e-9</span><span class="p">]</span> <span class="c1"># Cp = a + b*T + c*T^2 + d*T^3 [J/mol/K]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – input file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.fluid.Fluid.is_valid">
+<code class="descname">is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.fluid.Fluid.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance is valid by ensuring that all the
+parameters of the object are of the correct type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if valid. False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.fluid.Fluid.save_to_file">
+<code class="descname">save_to_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.fluid.Fluid.save_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance to a yaml file which can later be fed to
+<a class="reference internal" href="#pythermophy.fluid.Fluid.init_from_file" title="pythermophy.fluid.Fluid.init_from_file"><code class="xref py py-func docutils literal"><span class="pre">init_from_file()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – output file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pythermophy.parent_class">
+<span id="parent-eos"></span><h2>Parent EOS<a class="headerlink" href="#module-pythermophy.parent_class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.parent_class.EOS">
+<em class="property">class </em><code class="descclassname">pythermophy.parent_class.</code><code class="descname">EOS</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>The parent equation of state (EOS) class. All the other EOS classes are
+derived from this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">EOS</span></code></a> instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pythermophy.parent_class.EOS.R">
+<code class="descname">R</code><em class="property"> = 8.3144598</em><a class="headerlink" href="#pythermophy.parent_class.EOS.R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_Z">
+<code class="descname">get_Z</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the compressibility factor of the fluid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">compressibility factor</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_adiabatic_index">
+<code class="descname">get_adiabatic_index</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_adiabatic_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the adiabatic index (ratio between isobaric and isochoric heat
+capacities) for a real gas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">adiabatic index (dimensionless)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_cp">
+<code class="descname">get_cp</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_cp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the real gas isobaric specific heat capacity (<img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/>) in
+J/mol/K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">isobaric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_cv">
+<code class="descname">get_cv</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the real gas isochoric specific heat capacity (<img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/>) in
+J/mol/K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">isochoric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_departure_cp">
+<code class="descname">get_departure_cp</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_departure_cp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the departure (difference between real gas and ideal gas) of
+isobaric specific heat capacity (<img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/>) in J/mol/K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">departure for isobaric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_departure_cv">
+<code class="descname">get_departure_cv</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_departure_cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the departure (difference between real gas and ideal gas) of
+isochoric specific heat capacity (<img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/>) in J/mol/K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">departure for isochoric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_ideal_cp">
+<code class="descname">get_ideal_cp</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_ideal_cp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ideal gas isobaric specific heat capacity (<img class="math" src="_images/math/4acbba1ec44865879803e1308858bb1397155a86.png" alt="c_p^0"/>) in J/mol/K.
+See <a class="reference external" href="http://www.wiley.com/college/moran/CL_0471465704_S/user/tables/TABLE3S/table3sframe.html">http://www.wiley.com/college/moran/CL_0471465704_S/user/tables/TABLE3S/table3sframe.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>T</strong> (<em>float</em>) – temperature (K)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">ideal gas isobaric specific heat capacity (J/mol/K)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_ideal_cv">
+<code class="descname">get_ideal_cv</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_ideal_cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ideal gas isochoric specific heat capacity (<img class="math" src="_images/math/473cd92074192732a3f7836799ea02fa2ec26680.png" alt="c_v^0"/>)
+in J/mol/K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>T</strong> (<em>float</em>) – temperature (K)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">ideal gas isochoric specific heat capacity (J/mol/K)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_rho">
+<code class="descname">get_rho</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_rho" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the density of the fluid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.parent_class.EOS.get_speed_of_sound">
+<code class="descname">get_speed_of_sound</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.parent_class.EOS.get_speed_of_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the speed of sound in a real gas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">speed of sound (m/s)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pythermophy.ideal_gas">
+<span id="ideal-gas-eos"></span><h2>Ideal Gas EOS<a class="headerlink" href="#module-pythermophy.ideal_gas" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.ideal_gas.IdealGas">
+<em class="property">class </em><code class="descclassname">pythermophy.ideal_gas.</code><code class="descname">IdealGas</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.ideal_gas.IdealGas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.parent_class.EOS</span></code></a></p>
+<p>Ideal gas equation of state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an equation of state (<a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">EOS</span></code></a>) instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pythermophy.ideal_gas.IdealGas.get_isothermal_compressibility">
+<code class="descname">get_isothermal_compressibility</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.ideal_gas.IdealGas.get_isothermal_compressibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the isothermal compressibility of an ideal gas</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K) [only required for consistency with the
+same function for other classes; not used in computation]</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">isothermal compressibility (1/Pa)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pythermophy.cubic_parent">
+<span id="parent-cubic-eos"></span><h2>Parent Cubic EOS<a class="headerlink" href="#module-pythermophy.cubic_parent" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.cubic_parent.CubicEOS">
+<em class="property">class </em><code class="descclassname">pythermophy.cubic_parent.</code><code class="descname">CubicEOS</code><span class="sig-paren">(</span><em>b</em>, <em>c</em>, <em>d</em>, <em>e</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.parent_class.EOS</span></code></a></p>
+<p>Parent class from which other cubic equations of state are derived.</p>
+<p>The equation of state is expressed as:</p>
+<div class="math">
+<p><img src="_images/math/8bad0d5bcbe6a8f596bd7f2d1efd7137a14eb718.png" alt="p = \frac{RT}{v - b + c} - \frac{a(T)}{v^2 + dv + e}"/></p>
+</div><p>where <img class="math" src="_images/math/7db06ef8d15ec3da74de320f765318859046e8db.png" alt="(p, v, T)"/> are the pressure, specific volume, and temperature
+respectively. <img class="math" src="_images/math/a00254b18ffa992f0ef19f6e6e095b83c8f85e94.png" alt="R"/> is the specific gas constant, and <img class="math" src="_images/math/887c70861ed025858f2739fb869e9b683b485eaf.png" alt="(a(T), b,
+c, d, e)"/> are the coefficients of the cubic equation of state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>b</strong> (<em>float</em>) – coefficient <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/></li>
+<li><strong>c</strong> (<em>float</em>) – coefficient <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/></li>
+<li><strong>d</strong> (<em>float</em>) – coefficient <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/></li>
+<li><strong>e</strong> (<em>float</em>) – coefficient <img class="math" src="_images/math/78a06cf7a34f39fde71fbba0d5539baae7c72d4e.png" alt="e"/></li>
+<li><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">EOS</span></code></a> instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_A">
+<code class="descname">get_A</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_A" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient <img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> of the cubic polynomial of
+compressiblity factor given by <img class="math" src="_images/math/7084837b29a752cb51af53e90bab800af71b2fe5.png" alt="Z^3 + A Z^2 + B Z + C = 0"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_B">
+<code class="descname">get_B</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_B" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient <img class="math" src="_images/math/9805f44feec6f81d376d09e88b8236635edbb3c8.png" alt="B"/> of the cubic polynomial of
+compressiblity factor given by <img class="math" src="_images/math/7084837b29a752cb51af53e90bab800af71b2fe5.png" alt="Z^3 + A Z^2 + B Z + C = 0"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="_images/math/9805f44feec6f81d376d09e88b8236635edbb3c8.png" alt="B"/></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_C">
+<code class="descname">get_C</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/> of the cubic polynomial of
+compressiblity factor given by <img class="math" src="_images/math/7084837b29a752cb51af53e90bab800af71b2fe5.png" alt="Z^3 + A Z^2 + B Z + C = 0"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_Z">
+<code class="descname">get_Z</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the compressibility factor of a real gas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">compressibility factor</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_a">
+<code class="descname">get_a</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature dependent coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/>.</p>
+<p>Function should be redefined in the child class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_departure_cp">
+<code class="descname">get_departure_cp</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_departure_cp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the departure (difference between real gas and ideal gas) of
+isobaric specific heat capacity <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> (J/mol/K)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+<li><strong>Z</strong> (<em>float</em>) – (optional kwarg) compressibility factor at (T, p). Computed
+by <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS.get_Z" title="pythermophy.cubic_parent.CubicEOS.get_Z"><code class="xref py py-func docutils literal"><span class="pre">get_Z()</span></code></a> if not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">departure of isobaric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_departure_cv">
+<code class="descname">get_departure_cv</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_departure_cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the departure (difference between real gas and ideal gas) for
+isochoric specific heat capacity (<img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/>) in J/mol/K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+<li><strong>Z</strong> (<em>float</em>) – (optional kwarg) compressibility factor at (T, p). Computed
+by <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS.get_Z" title="pythermophy.cubic_parent.CubicEOS.get_Z"><code class="xref py py-func docutils literal"><span class="pre">get_Z()</span></code></a> if not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">departure of isochoric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_diff_a_T">
+<code class="descname">get_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+<p>Function should be redefined in the child class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_double_diff_a_T">
+<code class="descname">get_double_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_double_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the second derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+<p>Function should be redefined in the child class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_isothermal_compressibility">
+<code class="descname">get_isothermal_compressibility</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_isothermal_compressibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the isothermal compressibility of a real gas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">isothermal compressibility (1/Pa)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_A_T_p">
+<code class="descname">get_pdiff_A_T_p</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_A_T_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of coefficient <img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> wrt. <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>
+at constant <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_A_p_T">
+<code class="descname">get_pdiff_A_p_T</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_A_p_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of coefficient <img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> wrt. <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>
+at constant <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_B_T_p">
+<code class="descname">get_pdiff_B_T_p</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_B_T_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of coefficient <img class="math" src="_images/math/9805f44feec6f81d376d09e88b8236635edbb3c8.png" alt="B"/> wrt. <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>
+at constant <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_B_p_T">
+<code class="descname">get_pdiff_B_p_T</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_B_p_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of coefficient <img class="math" src="_images/math/9805f44feec6f81d376d09e88b8236635edbb3c8.png" alt="B"/> wrt. <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>
+at constant <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_C_T_p">
+<code class="descname">get_pdiff_C_T_p</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_C_T_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of coefficient <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/> wrt. <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>
+at constant <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_C_p_T">
+<code class="descname">get_pdiff_C_p_T</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_C_p_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of coefficient <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/> wrt. <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>
+at constant <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_Z_T_p">
+<code class="descname">get_pdiff_Z_T_p</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_Z_T_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of <img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/> wrt. <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> at constant
+<img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> – pressure (Pa)</li>
+<li><strong>Z</strong> (<em>float</em>) – (optional kwarg) compressibility factor at (T, p). Computed
+by <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS.get_Z" title="pythermophy.cubic_parent.CubicEOS.get_Z"><code class="xref py py-func docutils literal"><span class="pre">get_Z()</span></code></a> if not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_parent.CubicEOS.get_pdiff_Z_p_T">
+<code class="descname">get_pdiff_Z_p_T</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_parent.CubicEOS.get_pdiff_Z_p_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of <img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/> wrt. <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/> at constant
+<img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> – pressure (Pa)</li>
+<li><strong>Z</strong> (<em>float</em>) – (optional kwarg) compressibility factor at (T, p). Computed
+by <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS.get_Z" title="pythermophy.cubic_parent.CubicEOS.get_Z"><code class="xref py py-func docutils literal"><span class="pre">get_Z()</span></code></a> if not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pythermophy.cubic_eos">
+<span id="cubic-eos"></span><h2>Cubic EOS<a class="headerlink" href="#module-pythermophy.cubic_eos" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.cubic_eos.PengRobinson">
+<em class="property">class </em><code class="descclassname">pythermophy.cubic_eos.</code><code class="descname">PengRobinson</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.PengRobinson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS" title="pythermophy.cubic_parent.CubicEOS"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.cubic_parent.CubicEOS</span></code></a></p>
+<p>Peng-Robinson equation of state.
+For details see: <a class="reference external" href="https://www.e-education.psu.edu/png520/m11_p2.html">https://www.e-education.psu.edu/png520/m11_p2.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">EOS</span></code></a> instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pythermophy.cubic_eos.PengRobinson.get_a">
+<code class="descname">get_a</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.PengRobinson.get_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature dependent coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_eos.PengRobinson.get_diff_a_T">
+<code class="descname">get_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.PengRobinson.get_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_eos.PengRobinson.get_double_diff_a_T">
+<code class="descname">get_double_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.PengRobinson.get_double_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the second derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pythermophy.cubic_eos.RedlichKwong">
+<em class="property">class </em><code class="descclassname">pythermophy.cubic_eos.</code><code class="descname">RedlichKwong</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.RedlichKwong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS" title="pythermophy.cubic_parent.CubicEOS"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.cubic_parent.CubicEOS</span></code></a></p>
+<p>Redlich-Kwong equation of state.
+For details see <a class="reference external" href="https://www.e-education.psu.edu/png520/m10_p4.html">https://www.e-education.psu.edu/png520/m10_p4.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">EOS</span></code></a> instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pythermophy.cubic_eos.RedlichKwong.get_a">
+<code class="descname">get_a</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.RedlichKwong.get_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature dependent coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_eos.RedlichKwong.get_diff_a_T">
+<code class="descname">get_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.RedlichKwong.get_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_eos.RedlichKwong.get_double_diff_a_T">
+<code class="descname">get_double_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.RedlichKwong.get_double_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the second derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pythermophy.cubic_eos.SoaveRedlichKwong">
+<em class="property">class </em><code class="descclassname">pythermophy.cubic_eos.</code><code class="descname">SoaveRedlichKwong</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.SoaveRedlichKwong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythermophy.cubic_parent.CubicEOS" title="pythermophy.cubic_parent.CubicEOS"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.cubic_parent.CubicEOS</span></code></a></p>
+<p>Soave-Redlich-Kwong equation of state.
+For details see: <a class="reference external" href="https://www.e-education.psu.edu/png520/m10_p5.html">https://www.e-education.psu.edu/png520/m10_p5.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">EOS</span></code></a> instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pythermophy.cubic_eos.SoaveRedlichKwong.get_a">
+<code class="descname">get_a</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.SoaveRedlichKwong.get_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature dependent coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_eos.SoaveRedlichKwong.get_diff_a_T">
+<code class="descname">get_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.SoaveRedlichKwong.get_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.cubic_eos.SoaveRedlichKwong.get_double_diff_a_T">
+<code class="descname">get_double_diff_a_T</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.cubic_eos.SoaveRedlichKwong.get_double_diff_a_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the second derivative of coefficient <img class="math" src="_images/math/7b0e1e95d407cd016bf2d11d8fbeb9a7f0b65b7c.png" alt="a(T)"/> wrt. temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pythermophy.lee_kesler">
+<span id="lee-kesler-eos"></span><h2>Lee-Kesler EOS<a class="headerlink" href="#module-pythermophy.lee_kesler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.lee_kesler.LeeKesler">
+<em class="property">class </em><code class="descclassname">pythermophy.lee_kesler.</code><code class="descname">LeeKesler</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythermophy.parent_class.EOS" title="pythermophy.parent_class.EOS"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.parent_class.EOS</span></code></a></p>
+<p>Lee-Kesler equation of state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fluid</strong> – a <a class="reference internal" href="#pythermophy.fluid.Fluid" title="pythermophy.fluid.Fluid"><code class="xref py py-class docutils literal"><span class="pre">Fluid</span></code></a> instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <code class="xref py py-class docutils literal"><span class="pre">EOS</span></code> instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.acentric_r">
+<code class="descname">acentric_r</code><em class="property"> = 0.3978</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.acentric_r" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.b1">
+<code class="descname">b1</code><em class="property"> = [0.1181193, 0.2026579]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.b1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.b2">
+<code class="descname">b2</code><em class="property"> = [0.265728, 0.331511]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.b2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.b3">
+<code class="descname">b3</code><em class="property"> = [0.15479, 0.027655]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.b3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.b4">
+<code class="descname">b4</code><em class="property"> = [0.030323, 0.203488]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.b4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.beta">
+<code class="descname">beta</code><em class="property"> = [0.65392, 1.226]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.beta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.c1">
+<code class="descname">c1</code><em class="property"> = [0.0236744, 0.0313385]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.c1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.c2">
+<code class="descname">c2</code><em class="property"> = [0.0186984, 0.0503618]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.c2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.c3">
+<code class="descname">c3</code><em class="property"> = [0.0, 0.016901]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.c3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.c4">
+<code class="descname">c4</code><em class="property"> = [0.042724, 0.041577]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.c4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.d1">
+<code class="descname">d1</code><em class="property"> = [1.55488e-05, 4.8736e-05]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.d1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.d2">
+<code class="descname">d2</code><em class="property"> = [6.23689e-05, 7.40336e-06]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.d2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pythermophy.lee_kesler.LeeKesler.gamma">
+<code class="descname">gamma</code><em class="property"> = [0.060167, 0.03754]</em><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.gamma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_B">
+<code class="descname">get_B</code><span class="sig-paren">(</span><em>Tr</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_B" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <img class="math" src="_images/math/dfda6e949d7e1372958c2336952a134119fce6d5.png" alt="B(T_r) = b_1 - b_2/T_r - b_3/T_r^2 - b_4/T_r^3"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature (<img class="math" src="_images/math/01e16cd753f9f7b5c99e673b2e7323186f1b4b4c.png" alt="T_r = T/T_c"/>)</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifies if the fluid is <em>simple</em> or <em>reference</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="_images/math/5d3da7b215324c96a3fd3a8d177789dd61a6d779.png" alt="B(T_r)"/></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_C">
+<code class="descname">get_C</code><span class="sig-paren">(</span><em>Tr</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <img class="math" src="_images/math/6292feb5dc9f7b67fccee8f12d35c811d0c7db24.png" alt="C(T_r) = c_1 - c_2/T_r + c_3/T_r^3"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature (<img class="math" src="_images/math/01e16cd753f9f7b5c99e673b2e7323186f1b4b4c.png" alt="T_r = T/T_c"/>)</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifies if the fluid is <em>simple</em> or <em>reference</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="_images/math/a2c4b489ef3fb6705ccbc2b1e5f0d431f9a193ad.png" alt="C(T_r)"/></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_D">
+<code class="descname">get_D</code><span class="sig-paren">(</span><em>Tr</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <img class="math" src="_images/math/96811d39f7513f8fa7fb1f0571d435dcc10039e7.png" alt="D(T_r) = d_1 + c_2/T_r"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature (<img class="math" src="_images/math/01e16cd753f9f7b5c99e673b2e7323186f1b4b4c.png" alt="T_r = T/T_c"/>)</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifies if the fluid is <em>simple</em> or <em>reference</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="_images/math/6bdcb27a248638c6fbc4374969e41c46506698b0.png" alt="D(T_r)"/></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_Z">
+<code class="descname">get_Z</code><span class="sig-paren">(</span><em>T</em>, <em>p</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the compressibility factor of a real gas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+<li><strong>init_vol</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) – (optional kwarg) initial guess for
+reduced volumes of ideal and reference fluids to be used in the
+nonlinear equation solver in <a class="reference internal" href="#pythermophy.lee_kesler.LeeKesler.get_reduced_volume" title="pythermophy.lee_kesler.LeeKesler.get_reduced_volume"><code class="xref py py-func docutils literal"><span class="pre">get_reduced_volume()</span></code></a>. Should be
+a list [v0, vr], where v0 is the inital guess for the simple fluid,
+and vr is the initial guess for the reference fluid.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">compressibility factor</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_departure_cp">
+<code class="descname">get_departure_cp</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_departure_cp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the departure (difference between real gas and ideal gas) of
+isobaric specific heat capacity <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> (J/mol/K)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">departure of isobaric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_departure_cp_aux">
+<code class="descname">get_departure_cp_aux</code><span class="sig-paren">(</span><em>Tr</em>, <em>pr</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_departure_cp_aux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary function used by <a class="reference internal" href="#pythermophy.lee_kesler.LeeKesler.get_departure_cp" title="pythermophy.lee_kesler.LeeKesler.get_departure_cp"><code class="xref py py-func docutils literal"><span class="pre">get_departure_cp()</span></code></a>.</p>
+<p>Computes the departure in isobaric specific heat capacity for <em>simple</em>
+and <em>reference</em> fluids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature</li>
+<li><strong>pr</strong> (<em>float</em>) – reduced pressure</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifices if the fluid is <em>simple</em> or <em>reference</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_departure_cv">
+<code class="descname">get_departure_cv</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_departure_cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the departure (difference between real gas and ideal gas) of
+isochoric specific heat capacity <img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/> (J/mol/K)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">departure of isochoric specific heat capacity (J/mol/K)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_departure_cv_aux">
+<code class="descname">get_departure_cv_aux</code><span class="sig-paren">(</span><em>Tr</em>, <em>pr</em>, <em>fluid</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_departure_cv_aux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary function used by <a class="reference internal" href="#pythermophy.lee_kesler.LeeKesler.get_departure_cv" title="pythermophy.lee_kesler.LeeKesler.get_departure_cv"><code class="xref py py-func docutils literal"><span class="pre">get_departure_cv()</span></code></a>.</p>
+<p>Computes the departure in isochoric specific heat capacity for <em>simple</em>
+and <em>reference</em> fluids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature</li>
+<li><strong>pr</strong> (<em>float</em>) – reduced pressure</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifices if the fluid is <em>simple</em> or <em>reference</em></li>
+<li><strong>Vr</strong> (<em>float</em>) – (optional kwarg) reduced volume at (Tr, pr). If not
+provided, <a class="reference internal" href="#pythermophy.lee_kesler.LeeKesler.get_reduced_volume" title="pythermophy.lee_kesler.LeeKesler.get_reduced_volume"><code class="xref py py-func docutils literal"><span class="pre">get_reduced_volume()</span></code></a> is used to compute it.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_isothermal_compressibility">
+<code class="descname">get_isothermal_compressibility</code><span class="sig-paren">(</span><em>T</em>, <em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_isothermal_compressibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the isothermal compressibility of a real gas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>float</em>) – temperature (K)</li>
+<li><strong>p</strong> (<em>float</em>) – pressure (Pa)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">isothermal compressibility (1/Pa)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_pdiff_pr_Tr_Vr">
+<code class="descname">get_pdiff_pr_Tr_Vr</code><span class="sig-paren">(</span><em>Tr</em>, <em>Vr</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_pdiff_pr_Tr_Vr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of <img class="math" src="_images/math/741e048c1fe6b73f15c141ce32c8870360c07acf.png" alt="p_r"/> wrt. <img class="math" src="_images/math/15e0430f5867e94fa4a7b69c68f5c829bbc4446f.png" alt="T_r"/> at
+constant <img class="math" src="_images/math/fcd6d9410c3378d8eb397cac0705afb5bb7e1039.png" alt="v_r"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature</li>
+<li><strong>Vr</strong> (<em>float</em>) – reduced volume</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifices if the fluid is <em>simple</em> or <em>reference</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_pdiff_pr_Vr_Tr">
+<code class="descname">get_pdiff_pr_Vr_Tr</code><span class="sig-paren">(</span><em>Tr</em>, <em>Vr</em>, <em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_pdiff_pr_Vr_Tr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partial derivative of <img class="math" src="_images/math/741e048c1fe6b73f15c141ce32c8870360c07acf.png" alt="p_r"/> wrt. <img class="math" src="_images/math/11bada19ab27646a50532c8f070bc9746e87b960.png" alt="V_r"/> at
+constant <img class="math" src="_images/math/15e0430f5867e94fa4a7b69c68f5c829bbc4446f.png" alt="T_r"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature</li>
+<li><strong>Vr</strong> (<em>float</em>) – reduced volume</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifices if the fluid is <em>simple</em> or <em>reference</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pythermophy.lee_kesler.LeeKesler.get_reduced_volume">
+<code class="descname">get_reduced_volume</code><span class="sig-paren">(</span><em>Tr</em>, <em>pr</em>, <em>fluid</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.lee_kesler.LeeKesler.get_reduced_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reduced volume <img class="math" src="_images/math/fcd6d9410c3378d8eb397cac0705afb5bb7e1039.png" alt="v_r"/>.</p>
+<p>This is done by solving the following nonlinear equation:</p>
+<div class="math">
+<p><img src="_images/math/23fcd3cbc97f469cd2d6d81c69ad4b3ddb8c628e.png" alt="\frac{p_r v_r}{T_r} = 1 + \frac{B(T_r)}{v_r} + \frac{C(T_r)}{v_r^2}
++ \frac{D(T_r)}{v_r^5} + \frac{c_4}{T_r^3 v_r^2}
+(\beta + \frac{\gamma}{v_r^2}) \exp(-\frac{\gamma}{v_r^2})"/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tr</strong> (<em>float</em>) – reduced temperature (<img class="math" src="_images/math/01e16cd753f9f7b5c99e673b2e7323186f1b4b4c.png" alt="T_r = T/T_c"/>)</li>
+<li><strong>pr</strong> (<em>float</em>) – reduced pressure (<img class="math" src="_images/math/ca7113f0b110afba9855d1addac3c90b563b7383.png" alt="p_r = p/p_c"/>)</li>
+<li><strong>fluid</strong> (<em>str</em>) – specifies if the fluid is <em>simple</em> or <em>reference</em></li>
+<li><strong>init_vol</strong> (<em>float</em>) – (optional kwarg) initial guess for reduced volume to be used in the
+nonlinear solver</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">reduced volume</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="theory.html" title="Theory"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Jithin Jith.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

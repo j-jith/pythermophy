@@ -1,1 +1,289 @@
-Initial commit
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pythermophy documentation &#8212; pythermophy 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Theory" href="theory.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="theory.html" title="Theory"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Next topic</h4>
+  <p class="topless"><a href="theory.html"
+                        title="next chapter">Theory</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pythermophy-documentation">
+<h1>pythermophy documentation<a class="headerlink" href="#pythermophy-documentation" title="Permalink to this headline">¶</a></h1>
+<p><strong>pythermophy</strong> is a python module for predicting various thermophysical
+properties of real fluids. The fluids can be currently  modelled using the
+following equations of state:</p>
+<ul class="simple">
+<li>Ideal Gas (IG)</li>
+<li>Redlich-Kwong (RK)</li>
+<li>Soave-Redlich-Kwong (SRK)</li>
+<li>Peng-Robinson (PR)</li>
+<li>Lee-Kesler (LK)</li>
+</ul>
+<p>At the moment, the following thermophysical properties can be predicted as a
+function of temperature <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> (K) and pressure <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/> (Pa):</p>
+<ul class="simple">
+<li>Density, <img class="math" src="_images/math/9a51ab9a0b521705e1e8762fac6bdd6f11771758.png" alt="\rho"/> (kg/m^3)</li>
+<li>Compressibility factor, <img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/></li>
+<li>Speed of sound, <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> (m/s)</li>
+<li>Isobaric specific heat capacity (real and ideal), <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> (J/mol/K)</li>
+<li>Isochoric specific heat capacity (real and ideal), <img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/> (J/mol/K)</li>
+<li>Departure function of specific heat capacities (J/mol/K)</li>
+<li>Adiabatic index, <img class="math" src="_images/math/3666981dc77862de77b6ecfcb64aad59b425cbaf.png" alt="\gamma"/></li>
+<li>Isothermal compressibility, <img class="math" src="_images/math/ff5f892bcd95e75a35fa5f73c3987fb51250ea1c.png" alt="\chi_T"/> (1/Pa)</li>
+</ul>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install pythermophy, it is recommended to clone the git repository and use
+the provided <code class="docutils literal"><span class="pre">setup.py</span></code> as follows.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/j-jith/pythermophy
+$ cd pythermophy
+$ python setup.py install
+</pre></div>
+</div>
+<p>The module was written and tested on Python 3, and therefore it is recommended
+to use pythermophy with Python 3.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Import module</span>
+ <span class="kn">import</span> <span class="nn">pythermophy</span> <span class="k">as</span> <span class="nn">pt</span>
+
+ <span class="c1"># Temperature and pressure</span>
+ <span class="n">T_0</span> <span class="o">=</span> <span class="mi">328</span>
+ <span class="n">p_0</span> <span class="o">=</span> <span class="mf">1e6</span>
+
+ <span class="c1"># Load fluid from file</span>
+ <span class="n">fluid</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">Fluid</span><span class="o">.</span><span class="n">init_from_file</span><span class="p">(</span><span class="s1">&#39;./fluids/CO2&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Ideal gas EOS</span>
+ <span class="n">ig</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">IG</span><span class="p">(</span><span class="n">fluid</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ideal gas&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_Z</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_rho</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cp: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_cp</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_cv</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_isothermal_compressibility</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gamma: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_adiabatic_index</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">ig</span><span class="o">.</span><span class="n">get_speed_of_sound</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+
+ <span class="c1"># Redlich-Kwong EOS</span>
+ <span class="n">rk</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">RK</span><span class="p">(</span><span class="n">fluid</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Redlich-Kwong&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_Z</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_rho</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cp: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_cp</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_cv</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_isothermal_compressibility</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gamma: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_adiabatic_index</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">rk</span><span class="o">.</span><span class="n">get_speed_of_sound</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+
+ <span class="c1"># Soave-Redlich-Kwong EOS</span>
+ <span class="n">srk</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">SRK</span><span class="p">(</span><span class="n">fluid</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Soave-Redlich-Kwong&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_Z</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_rho</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cp: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_cp</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_cv</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_isothermal_compressibility</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gamma: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_adiabatic_index</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">srk</span><span class="o">.</span><span class="n">get_speed_of_sound</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+
+ <span class="c1"># Peng-Robinson EOS</span>
+ <span class="n">pr</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">PR</span><span class="p">(</span><span class="n">fluid</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Peng-Robinson&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_Z</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_rho</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cp: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_cp</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_cv</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_isothermal_compressibility</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gamma: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_adiabatic_index</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_speed_of_sound</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+
+ <span class="c1"># Lee-Kesler EOS</span>
+ <span class="n">lk</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">LK</span><span class="p">(</span><span class="n">fluid</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lee-Kesler&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_Z</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_rho</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cp: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_cp</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_cv</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_isothermal_compressibility</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gamma: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_adiabatic_index</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">lk</span><span class="o">.</span><span class="n">get_speed_of_sound</span><span class="p">(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Here the fluid is loaded from the following file</p>
+<div class="code yaml highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Name of the fluid</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">CO2</span>
+
+<span class="c1"># Molar mass [kg/mol]</span>
+<span class="n">molar_mass</span><span class="p">:</span> <span class="mf">44.01e-3</span>
+
+<span class="c1"># Critical temperature [K]</span>
+<span class="n">T_crit</span><span class="p">:</span> <span class="mf">304.25</span>
+
+<span class="c1"># Critical pressure [Pa]</span>
+<span class="n">p_crit</span><span class="p">:</span> <span class="mf">7.38e+6</span>
+
+<span class="c1"># Acentric factor [dimensionless]</span>
+<span class="n">acentric</span><span class="p">:</span> <span class="mf">0.228</span>
+
+<span class="c1"># Cp = a + b*T + c*T^2 + d*T^3 [J/mol/K]</span>
+<span class="n">ideal_cp_coeffs</span><span class="p">:</span> <span class="p">[</span><span class="mf">22.26</span><span class="p">,</span> <span class="mf">5.981e-2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.501e-5</span><span class="p">,</span> <span class="mf">7.469e-9</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-more">
+<h2>Read more<a class="headerlink" href="#read-more" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#ideal-gas-eos">Ideal Gas EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#cubic-eos">Cubic EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#lee-kesler-eos">Lee-Kesler EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="submodules.html">API documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="submodules.html#module-pythermophy.fluid">Fluid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submodules.html#module-pythermophy.parent_class">Parent EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submodules.html#module-pythermophy.ideal_gas">Ideal Gas EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submodules.html#module-pythermophy.cubic_parent">Parent Cubic EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submodules.html#module-pythermophy.cubic_eos">Cubic EOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submodules.html#module-pythermophy.lee_kesler">Lee-Kesler EOS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-pythermophy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pythermophy" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pythermophy.IG">
+<em class="property">class </em><code class="descclassname">pythermophy.</code><code class="descname">IG</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.IG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="submodules.html#pythermophy.ideal_gas.IdealGas" title="pythermophy.ideal_gas.IdealGas"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.ideal_gas.IdealGas</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pythermophy.LK">
+<em class="property">class </em><code class="descclassname">pythermophy.</code><code class="descname">LK</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.LK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="submodules.html#pythermophy.lee_kesler.LeeKesler" title="pythermophy.lee_kesler.LeeKesler"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.lee_kesler.LeeKesler</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pythermophy.PR">
+<em class="property">class </em><code class="descclassname">pythermophy.</code><code class="descname">PR</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.PR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="submodules.html#pythermophy.cubic_eos.PengRobinson" title="pythermophy.cubic_eos.PengRobinson"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.cubic_eos.PengRobinson</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pythermophy.RK">
+<em class="property">class </em><code class="descclassname">pythermophy.</code><code class="descname">RK</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.RK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="submodules.html#pythermophy.cubic_eos.RedlichKwong" title="pythermophy.cubic_eos.RedlichKwong"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.cubic_eos.RedlichKwong</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pythermophy.SRK">
+<em class="property">class </em><code class="descclassname">pythermophy.</code><code class="descname">SRK</code><span class="sig-paren">(</span><em>fluid</em><span class="sig-paren">)</span><a class="headerlink" href="#pythermophy.SRK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="submodules.html#pythermophy.cubic_eos.SoaveRedlichKwong" title="pythermophy.cubic_eos.SoaveRedlichKwong"><code class="xref py py-class docutils literal"><span class="pre">pythermophy.cubic_eos.SoaveRedlichKwong</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="theory.html" title="Theory"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Jithin Jith.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

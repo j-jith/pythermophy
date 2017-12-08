@@ -1,0 +1,380 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Theory &#8212; pythermophy 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Submodules" href="submodules.html" />
+    <link rel="prev" title="pythermophy documentation" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="submodules.html" title="Submodules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="pythermophy documentation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">pythermophy documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="submodules.html"
+                        title="next chapter">Submodules</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
+<p>Equation of state (EOS) of a real fluid can be expressed in a general form as</p>
+<div class="math">
+<p><img src="_images/math/650cc175d77fd55bfce7687571d6e16ec22cb4de.png" alt="pv = ZRT,"/></p>
+</div><p>where <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/> is the pressure, <img class="math" src="_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/> is the specific volume, <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> is the temperature,
+<img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/> is the compressibility factor, and <img class="math" src="_images/math/a3e5c4b9d99fbe8988baa74195e43358be70dea1.png" alt="R = R_0 / M"/> is the specific gas
+constant (<img class="math" src="_images/math/969cd0f76ae31ba09fb89bed2023267a8c4cd6f3.png" alt="R_0"/> is the universal gas constant and <img class="math" src="_images/math/450a8e2c2320d77181e0d4fc68c947e9a5de8ecb.png" alt="M"/> is the molar mass of the
+fluid). Various EOS differ based on how they determine <img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/>.</p>
+<p>The density of the fluid can be easily obtained from the specific volume as
+<img class="math" src="_images/math/223ba7192da0ae8fc524e59dc72e097a896e4925.png" alt="\rho=M/v"/>. The speed of sound, on the other hand requires knowledge of the
+heat capacities, and isothermal compressibility of the fluid. Tee expression
+for speed of sound of a real fluid is</p>
+<div class="math">
+<p><img src="_images/math/477e07e3e3b16917351297161350a3926ae47661.png" alt="c^2 = \frac{1}{\rho} \frac{c_p}{c_v} \frac{1}{\chi_T},"/></p>
+</div><p>where <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> and <img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/> are the isobaric and isochoric specific heat capacities,
+and <img class="math" src="_images/math/4799da6e22907473651c06a07c9d7e9ae96beba3.png" alt="chi_t"/> is the isothermal compressibility.</p>
+<div class="section" id="ideal-gas-eos">
+<h2>Ideal Gas EOS<a class="headerlink" href="#ideal-gas-eos" title="Permalink to this headline">¶</a></h2>
+<p>The ideal gas (IG) EOS is obtained by assuming <img class="math" src="_images/math/29740a4b73a6eaa6870089eabc894340010bba0d.png" alt="Z=1"/>. This EOS is quite
+satisfactory at lower pressures. However, at higher pressures it is unreliable
+as it does not take into account the finite volume of the fluid molecules or
+the interactions between them.</p>
+<p>For an ideal gas, the heat capacities can be expressed as polynomials of
+temperature. In the present work, the isobaric specific heat capacity is
+assumed to be modelled by the following polynomial.</p>
+<div class="math">
+<p><img src="_images/math/875c4aaddb84e5a8822c08f181a8579afbb10b2a.png" alt="c_p = a + bT + cT^2 + dT^3."/></p>
+</div><p>The coefficients <img class="math" src="_images/math/ed8a935ea26f8efc93851f67951f2977900c28c3.png" alt="(a, b, c, d)"/> for various fluids can be found in the tables
+provided by <a class="reference external" href="http://www.wiley.com/college/moran/CL_0471465704_S/user/">ThermoNet</a> (reproduced here in <a class="reference internal" href="table_cp.html"><span class="doc">Ideal gas  polynomials for various fluids</span></a>). The ideal gas
+isochoric specific heat capacity can then be obtained by the relation <img class="math" src="_images/math/f19d133970ce1a0d9e6ce04f671a3d27468d5b3f.png" alt="c_p -c_v
+= R"/>.</p>
+<p>The isothermal compressibility is of an ideal gas is given by</p>
+<div class="math">
+<p><img src="_images/math/fbf49a030d98e815edebc0a883a77d330d11c640.png" alt="\chi_T = -\frac{1}{v} \left. \frac{\partial v}{\partial p} \right|_T = \frac{1}{p}"/></p>
+</div></div>
+<div class="section" id="cubic-eos">
+<h2>Cubic EOS<a class="headerlink" href="#cubic-eos" title="Permalink to this headline">¶</a></h2>
+<p>The cubic EOS are an improvement on the ideal gas model in the sense that they
+try to model the finite volume of the fluid molecules as well as the
+interactions between them. The present work considers three different cubic EOS
+– Redlich-Kwong (RK) <a class="reference internal" href="#redlich1949" id="id1">[redlich1949]</a>, Soave-Redlich-Kwong (SRK) <a class="reference internal" href="#soave1972" id="id2">[soave1972]</a>,
+and Peng-Robinson(PR) <a class="reference internal" href="#peng1976" id="id3">[peng1976]</a>. A general expression for cubic EOS is given
+by</p>
+<div class="math">
+<p><img src="_images/math/d7a26644d102b1dd6d0b3080de5d373926758afc.png" alt="p = \frac{RT}{v-b+c} - \frac{a(T)}{v^2+dv+e},"/></p>
+</div><p>where <img class="math" src="_images/math/0842bc8e551770c80ee0c52ad7dce54ee71188d8.png" alt="(a(T), b, c, d, e)"/> are the coefficients of the EOS. Substituting the
+general EOS <img class="math" src="_images/math/e2e0f117d5deecf357ff5e2dbda599b7ef60809e.png" alt="pv = ZRT"/> into the above equation results in a cubic equation in
+terms of <img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/> given by</p>
+<div class="math">
+<p><img src="_images/math/f204aaf3112900d58bfcfd3377cc267303c943dc.png" alt="Z^3 + A Z^2 + B Z + C = 0."/></p>
+</div><p>The coefficients <img class="math" src="_images/math/462e800ca76a62c6d1b97625a957fc0b7d7a7ce9.png" alt="A, B, C"/> are expressed as</p>
+<div class="math">
+<p><img src="_images/math/c0134eef7d90a3eed1d5914dd331ff0d09f19ea9.png" alt="A(T, p) = \frac{-RT - bp + cp + dp}{RT} \\
+B(T, p) = \frac{-RTdp + a(T)p - bdp^2 + cdp^2 + ep^2}{R^2 T^2} \\
+C(T, p) = \frac{-RTep^2 - a(T)bp^2 + a(T)cp^2 - bep^3 + cep^3}{R^3
+T^3}."/></p>
+</div><p>For the cubic EOS considered here, these coefficients are as follows.</p>
+<ul>
+<li><p class="first"><strong>Redlich-Kwong (RK)</strong>:</p>
+<div class="math">
+<p><img src="_images/math/8dca596dc4faea2738c9bcafe7487bc242ad1ceb.png" alt="a(T) = \frac{0.4278 R^2 T_c^2}{p_c} \sqrt{\frac{T_c}{T}} \\
+b = d = \frac{0.08664 R T_c}{p_c} \\
+c = e = 0."/></p>
+</div></li>
+<li><p class="first"><strong>Soave-Redlich-Kwong (SRK)</strong></p>
+<div class="math">
+<p><img src="_images/math/058d89103452adfcb9f3c26f583f93b8f6b4bc1e.png" alt="a(T) = \frac{0.4278 R^2 T_c^2}{p_c} \left[1 + \kappa \left(1 - \sqrt{\frac{T}{T_c}} \right) \right]^2 \\
+\kappa = 0.48508 + 1.55171 \omega - 0.15613 \omega^2 \\
+b = d = \frac{0.08664 R T_c}{p_c} \\
+c = e = 0."/></p>
+</div></li>
+<li><p class="first"><strong>Peng-Robinson (PR)</strong></p>
+<div class="math">
+<p><img src="_images/math/0ffb3cbfb17555fca2b88240a6f635b12ec92fb6.png" alt="a(T) = \frac{0.45724 R^2 T_c^2}{p_c} \left[1 + \kappa \left(1 - \sqrt{\frac{T}{T_c}} \right) \right]^2 \\
+\kappa = 0.37464 + 1.54226 \omega - 0.26992 \omega^2 \\
+b = \frac{0.07780 R T_c}{p_c} \\
+c = 0 \qquad d = 2b \qquad e = -b^2."/></p>
+</div></li>
+</ul>
+<p>Here, <img class="math" src="_images/math/78867d08a038c5a538720f026e86487122844592.png" alt="(T_c, p_c)"/> are the critical temperature and pressure of the fluid, and
+<img class="math" src="_images/math/b51aa99e0bc8cc8c3d17c0b9cf822db73e13293e.png" alt="\omega"/> is its acentric factor.</p>
+<p>The heat capacities can be obtained from the enthalpy and internal energy of
+the fluid. The isobaric specific heat capacity <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> is given by <img class="math" src="_images/math/5aae6b10ae31d7f2a3bcdc03da7e90b62f21181c.png" alt="c_p =
+\left. \frac{\partial H}{\partial T} \right|_p"/>, where <img class="math" src="_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/> is the specific
+enthalpy. Similarly, the isochoric specific heat capacity <img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/> is given by
+<img class="math" src="_images/math/5dba80c9b2f7ba1190f9e4c6029c7fe736343eaa.png" alt="c_v = \left. \frac{\partial U}{\partial T} \right|_v"/>, where <img class="math" src="_images/math/169c982b5e649cd1bd6445df5583affe427ea269.png" alt="U"/> is the
+specific internal energy. The expressions for <img class="math" src="_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/> and <img class="math" src="_images/math/169c982b5e649cd1bd6445df5583affe427ea269.png" alt="U"/> can be found in
+<a class="reference internal" href="#assael1996" id="id4">[assael1996]</a>, and are not reproduced here for the sake of brevity. After
+incorporating these expressions, the heat capacities can be written as</p>
+<div class="math">
+<p><img src="_images/math/0346c55cfca7f79852bfb1bd8654bfd24144ab56.png" alt="c_p = c_p^0 %
++ R T Z_p' %
++ R (Z-1) %
++ T \frac{\log(h)}{\Delta} \frac{\mathrm d^2 a}{\mathrm d T^2} %
++ \frac{h g}{\Delta} (T \frac{\mathrm d a}{\mathrm d T} - a) %
+\\
+c_v = c_v^0 %
++ \frac{T}{\Delta} \frac{\mathrm d^2 a}{\mathrm d T^2} \log(h),"/></p>
+</div><p>where <img class="math" src="_images/math/edaddccb2fff2520369e09dbd1a7db17de9bed6b.png" alt="Z=pv/RT"/>, and <img class="math" src="_images/math/4acbba1ec44865879803e1308858bb1397155a86.png" alt="c_p^0"/> and <img class="math" src="_images/math/473cd92074192732a3f7836799ea02fa2ec26680.png" alt="c_v^0"/> are the ideal gas specific heat
+capacities; and</p>
+<div class="math">
+<p><img src="_images/math/9ea143ae8a47afbac541d3179d257e1df6352373.png" alt="\Delta = \sqrt{d^2 - 4 e} \qquad
+Z_p' = \left. \frac{\partial Z}{\partial T} \right|_p \\
+h = \frac{\Delta + 2 R T Z/p + d}{-\Delta + 2 R T Z/p + d} \qquad
+g = \frac{-4 \Delta R p (T Z_p' + Z)}{(2 R T Z - p(\Delta - d))^2}."/></p>
+</div><p>Lastly, the isothermal compressibility of the fluid is obtained using the
+following relation.</p>
+<div class="math">
+<p><img src="_images/math/74b67ec6ac99e0981d777a22d4f94cd28a2f8796.png" alt="\chi_T = -\frac{1}{v} \left. \frac{\partial v}{\partial p} \right|_T
+    = \frac{1}{p} - \frac{1}{Z} \left. \frac{\partial Z}{\partial p} \right|_T."/></p>
+</div></div>
+<div class="section" id="lee-kesler-eos">
+<h2>Lee-Kesler EOS<a class="headerlink" href="#lee-kesler-eos" title="Permalink to this headline">¶</a></h2>
+<p>The Lee-Kesler (LK) EOS <a class="reference internal" href="#lee1975" id="id5">[lee1975]</a> is based on the correlation developed by
+Pitzer and co. according to which <img class="math" src="_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/> of a fluid can be written as</p>
+<div class="math">
+<p><img src="_images/math/7f50f5e3eb9138afe988e57cf14c6ec26f5ac149.png" alt="Z(T_r, p_r) = Z_0(T_r, p_r) + \omega Z_1 (T_r, p_r),"/></p>
+</div><p>where <img class="math" src="_images/math/16cf9cbf97ecafe1c942adcf7e614a80f1cee0a9.png" alt="Z_0"/> is the compressibility factor of a simple fluid whose molecules are
+spherical, and <img class="math" src="_images/math/674ef3f58d8aa88bdf1c700dad49bf5a39ea291e.png" alt="Z_1"/> is the deviation of compressibility factor. <img class="math" src="_images/math/b51aa99e0bc8cc8c3d17c0b9cf822db73e13293e.png" alt="\omega"/> is
+the acentric factor of the fluid – a measure of the non-spherical nature of
+the molecules. Also, <img class="math" src="_images/math/dff5cfdd7c9c1fc5bb142302d278b2b30653c354.png" alt="T_r=T/T_c"/> and <img class="math" src="_images/math/072905c56a3c0cecbb8441d5900a8d1fa8a42872.png" alt="p_r=p/p_c"/> are the reduced temperature
+and pressure. The deviation <img class="math" src="_images/math/674ef3f58d8aa88bdf1c700dad49bf5a39ea291e.png" alt="Z_1"/> is expressed as a linear function of <img class="math" src="_images/math/16cf9cbf97ecafe1c942adcf7e614a80f1cee0a9.png" alt="Z_0"/>
+and the compressibility factor <img class="math" src="_images/math/8ad271bb0046731e908fcfd0bba627bba3d16427.png" alt="Z_2"/> of a heavy non-spherical reference fluid
+(with acentric factor <img class="math" src="_images/math/1b47ba42f22f4cbc5a96940f4bdfb8bb21076c7c.png" alt="\omega_2"/>) in the following manner.</p>
+<div class="math">
+<p><img src="_images/math/a9376c9d12f42d5ea7a0d3860e53c98e4ec9e23e.png" alt="Z_1(T_r, p_r) = \frac{Z_2(T_r, p_r) - Z_0(T_r, p_r)}{\omega_2}."/></p>
+</div><p><img class="math" src="_images/math/16cf9cbf97ecafe1c942adcf7e614a80f1cee0a9.png" alt="Z_0"/> and <img class="math" src="_images/math/8ad271bb0046731e908fcfd0bba627bba3d16427.png" alt="Z_2"/> are obtained by solving the following nonlinear equation.</p>
+<div class="math">
+<p><img src="_images/math/ee3e1846e0d94e02a5222c6915742663b7af0454.png" alt="Z_{0,2} = \frac{p_r v_r}{T_r} = 1 + \frac{B(T_r)}{v_r} + \frac{C(T_r)}{v_r^2}
++ \frac{D(T_r)}{v_r^5}
++ \frac{c_4}{T_r^3 v_r^2} \left( \beta +
+\frac{\gamma}{v_r^2} \right) \exp{\left(\frac{-\gamma}{v_r^2}\right)},"/></p>
+</div><p>where <img class="math" src="_images/math/fcd6d9410c3378d8eb397cac0705afb5bb7e1039.png" alt="v_r"/> is called the reduced volume, and</p>
+<div class="math">
+<p><img src="_images/math/4d3cbe107a692ef41dd205e1515c6efb259640bb.png" alt="B(T_r) = b_1 - \frac{b_2}{T_r} - \frac{b_3}{T_r^2} - \frac{b_4}{T_r^3} \\
+C(T_r) = c_1 - \frac{c_2}{T_r} + {c_3}{T_r^3} \\
+D(T_r) = d_1 + \frac{d_2}{T_r}."/></p>
+</div><p>The constant <img class="math" src="_images/math/cd8529840b2258d61f40e9f4973ec5b5d82c820d.png" alt="b_i, c_i, d_i, \beta"/> and <img class="math" src="_images/math/3666981dc77862de77b6ecfcb64aad59b425cbaf.png" alt="\gamma"/> are different for the simple
+and reference fluids, and are listed in the table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="14%" />
+<col width="17%" />
+<col width="19%" />
+<col width="14%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Constant</th>
+<th class="head">Simple fluid</th>
+<th class="head">Reference fluid</th>
+<th class="head">Constant</th>
+<th class="head">Simple fluid</th>
+<th class="head">Reference fluid</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img class="math" src="_images/math/c60438342dffc213ff1ce7aff65c1e9f15b8cd1b.png" alt="b_1"/></td>
+<td>0.1181193</td>
+<td>0.2026579</td>
+<td><img class="math" src="_images/math/5d81a692b160d21b5482bdb65d77e35e1546c663.png" alt="b_2"/></td>
+<td>0.265728</td>
+<td>0.331511</td>
+</tr>
+<tr class="row-odd"><td><img class="math" src="_images/math/5d609f3ba37350e0e4f16210e04a2d6c4fab99bf.png" alt="b_3"/></td>
+<td>0.154790</td>
+<td>0.027655</td>
+<td><img class="math" src="_images/math/cb2beb5efeb39e0ecdfe6760ca92a0c3dea5311f.png" alt="b_4"/></td>
+<td>0.030323</td>
+<td>0.203488</td>
+</tr>
+<tr class="row-even"><td><img class="math" src="_images/math/454c8d52c7b36dbdc88b016bb56e5912df877343.png" alt="c_1"/></td>
+<td>0.0236744</td>
+<td>0.0313385</td>
+<td><img class="math" src="_images/math/fc5ec5f6f51270e9a5db3d2065bdf9113f1c895e.png" alt="c_2"/></td>
+<td>0.0186984</td>
+<td>0.0503618</td>
+</tr>
+<tr class="row-odd"><td><img class="math" src="_images/math/0f59acd046a5526ae5b76c80ab81d26939806086.png" alt="c_3"/></td>
+<td>0.0</td>
+<td>0.016901</td>
+<td><img class="math" src="_images/math/04a99076934290c5bf8fdc8a22db9e6e004d94fd.png" alt="c_4"/></td>
+<td>0.042724</td>
+<td>0.041577</td>
+</tr>
+<tr class="row-even"><td><img class="math" src="_images/math/e04ffd451a630858860aa2eb7198645aebfbc65b.png" alt="d_1 \times 10^4"/></td>
+<td>0.155488$</td>
+<td>0.48736</td>
+<td><img class="math" src="_images/math/9b2debffe30e2b0cfa4f7f3a1f699b77e6697a39.png" alt="d_2 \times 10^4"/></td>
+<td>0.623689$</td>
+<td>0.0740336</td>
+</tr>
+<tr class="row-odd"><td><img class="math" src="_images/math/410a9d0df9c135dd73b269cba7ef04dcfd932b1f.png" alt="\beta"/></td>
+<td>0.65392</td>
+<td>1.226</td>
+<td><img class="math" src="_images/math/3666981dc77862de77b6ecfcb64aad59b425cbaf.png" alt="\gamma"/></td>
+<td>0.060167</td>
+<td>0.03754</td>
+</tr>
+</tbody>
+</table>
+<p>The departure (difference between real and ideal fluid) in <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> and <img class="math" src="_images/math/659cba87d79c331599a2e6e680eb3c607104cdf7.png" alt="c_v"/> for
+the simple and reference fluids is given by <a class="reference internal" href="#assael1996" id="id6">[assael1996]</a></p>
+<div class="math">
+<p><img src="_images/math/1ef5322613186467d64cbd7b6eb478aa0ff1ba9d.png" alt="\frac{\left. c_v^r \right|_{0, 2}}{R} = 2 \frac{(b_3 + 3 b_4/T_r)}{T_r v_r} - 3
+    \frac{c_3}{T_r^3 v_r^2} - 6 E \\
+    \frac{\left. c_p^r \right|_{0,2}}{R} = \frac{c_v^r|_i}{R} - 1 - T_r
+        \left. \left( \left. \frac{\partial p_r}{\partial T_r} \right|_{v_r} \right)^2 \right/
+                \left( \left. \frac{\partial p_r}{\partial v_r} \right|_{T_r} \right),"/></p>
+</div><p>where</p>
+<div class="math">
+<p><img src="_images/math/81a4384ede97a8298900cf77eba89eed68449921.png" alt="E = \frac{c_4}{2 T_r^3 \gamma}  \left( \beta + 1 - \left(\beta + 1 +
+\frac{\gamma}{v_r^2}\right) \exp\left(\frac{-\gamma}{v_r^2}\right) \right)."/></p>
+</div><p>Then, the real gas heat capacities are given by</p>
+<div class="math">
+<p><img src="_images/math/044f057f8f6c87d38e2e514eb2b588ccd8d98c93.png" alt="c_p = c_p^0 + c_p^r|_0 + \omega \frac{(c_p^r|_2 - c_p^r|_0)}{\omega_2} \\
+c_v = c_v^0 + c_v^r|_0 + \omega \frac{(c_v^r|_2 - c_v^r|_0)}{\omega_2},"/></p>
+</div><p>where <img class="math" src="_images/math/4acbba1ec44865879803e1308858bb1397155a86.png" alt="c_p^0"/> and <img class="math" src="_images/math/473cd92074192732a3f7836799ea02fa2ec26680.png" alt="c_v^0"/> are the ideal gas heat capacities.</p>
+<p>The isothermal compressibility of the simple and reference fluids is given by</p>
+<div class="math">
+<p><img src="_images/math/a70bd7e3eda1c91db57f2ec523b2680973012b5d.png" alt="\chi_T|_{0,2} = -\frac{1}{v} \left. \frac{\partial v}{\partial p} \right|_T
+    = \frac{1}{p} - \frac{1}{Z_{0,2}} \left. \frac{\partial Z_{0,2}}{\partial p} \right|_T."/></p>
+</div><p>The isothermal compressibility of the real fluid can then be obtained by</p>
+<div class="math">
+<p><img src="_images/math/6da321a8d6f64ab4244419ba78116c8030ea9d9c.png" alt="\chi_T = \chi_T|_0 + \omega \frac{(\chi_T|_2 - \chi_T|_0)}{\omega_2}."/></p>
+</div></div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils citation" frame="void" id="redlich1949" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[redlich1949]</a></td><td>Redlich O, Kwong JNS. On the Thermodynamics of Solutions. V.
+An Equation of State. Fugacities of Gaseous Solutions. Chemical Reviews
+1949;44:233–44. doi:10.1021/cr60137a013.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="soave1972" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[soave1972]</a></td><td>Soave G. Equilibrium constants from a modified Redlich-Kwong
+equation of state. Chemical Engineering Science 1972;27:1197–203.
+doi:10.1016/0009-2509(72)80096-4.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="peng1976" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[peng1976]</a></td><td>Peng D-Y, Robinson DB. A New Two-Constant Equation of State.
+Industrial &amp; Engineering Chemistry Fundamentals 1976;15:59–64.
+doi:10.1021/i160057a011.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="assael1996" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[assael1996]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Assael MJ, Trusler JPM, Tsolakis TF. Thermophysical Properties
+of Fluids: An Introduction to Their Prediction. World Scientific; 1996.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="lee1975" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[lee1975]</a></td><td>Lee BI, Kesler MG. A generalized thermodynamic correlation based
+on three-parameter corresponding states. AIChE J 1975;21:510–27.
+doi:10.1002/aic.690210313.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="submodules.html" title="Submodules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="pythermophy documentation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Jithin Jith.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ideal gas polynomials for various fluids &#8212; pythermophy 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ideal-gas-polynomials-for-various-fluids">
+<h1>Ideal gas <img class="math" src="_images/math/c037a2c2da63e8366706d063ca1c2e49fca904e4.png" alt="c_p(T)"/> polynomials for various fluids<a class="headerlink" href="#ideal-gas-polynomials-for-various-fluids" title="Permalink to this headline">¶</a></h1>
+<p>For the polynomial</p>
+<div class="math">
+<p><img src="_images/math/88526811625fe0ccfe1588ee181316d41411188f.png" alt="c_p = a + bT + cT^2 + dT^3,"/></p>
+</div><p>the values of <img class="math" src="_images/math/77a5d0210c3f7e10ff751b847ce3e7d8ee06713a.png" alt="(a,b,c,d)"/> are tabulated below. Note that <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> is in K, and <img class="math" src="_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/>
+is in J/mol/K. This table is originally located at
+<a class="reference external" href="http://www.wiley.com/college/moran/CL_0471465704_S/user/tables/TABLE3S/table3sframe.html">http://www.wiley.com/college/moran/CL_0471465704_S/user/tables/TABLE3S/table3sframe.html</a>.
+It has been reproduced here for the sake of posterity.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="8%" />
+<col width="7%" />
+<col width="16%" />
+<col width="15%" />
+<col width="15%" />
+<col width="10%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" rowspan="2">Substance</th>
+<th class="head" rowspan="2">a</th>
+<th class="head" rowspan="2">b</th>
+<th class="head" rowspan="2">c</th>
+<th class="head" rowspan="2">d</th>
+<th class="head" rowspan="2">e</th>
+<th class="head">&#160;</th>
+<th class="head" colspan="2">Error (%)</th>
+</tr>
+<tr class="row-even"><th class="head">Range (K)</th>
+<th class="head">Max.</th>
+<th class="head">Avg.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>Nitrogen</td>
+<td>N2</td>
+<td>28.9</td>
+<td>-0.1571 X 10-2</td>
+<td>0.8081 X 10-5</td>
+<td>-2.873 X 10-9</td>
+<td>273-1800</td>
+<td>0.59</td>
+<td>0.34</td>
+</tr>
+<tr class="row-even"><td>Oxygen</td>
+<td>O2</td>
+<td>25.48</td>
+<td>1.520 X 10-2</td>
+<td>-0.7155 X 10-5</td>
+<td>1.312 X 10-9</td>
+<td>273-1800</td>
+<td>1.19</td>
+<td>0.28</td>
+</tr>
+<tr class="row-odd"><td>Air</td>
+<td>&#160;</td>
+<td>28.11</td>
+<td>0.1967 X 10-2</td>
+<td>0.4802 X 10-5</td>
+<td>-1.966 X 10-9</td>
+<td>273-1800</td>
+<td>0.72</td>
+<td>0.33</td>
+</tr>
+<tr class="row-even"><td>Hydrogen</td>
+<td>H2</td>
+<td>29.11</td>
+<td>-0.1916 X 10-2</td>
+<td>0.4003 X 10-5</td>
+<td>-0.8704 X 10-9</td>
+<td>273-1800</td>
+<td>1.01</td>
+<td>0.26</td>
+</tr>
+<tr class="row-odd"><td>Carbon monoxide</td>
+<td>CO</td>
+<td>28.16</td>
+<td>0.1675 X 10-2</td>
+<td>0.5372 X 10-5</td>
+<td>2.222 X 10-9</td>
+<td>273-1800</td>
+<td>0.89</td>
+<td>0.37</td>
+</tr>
+<tr class="row-even"><td>Carbon dioxide</td>
+<td>CO2</td>
+<td>22.26</td>
+<td>5.981 X 10-2</td>
+<td>-3.501 X 10-5</td>
+<td>7.469 X 10-9</td>
+<td>273-1800</td>
+<td>0.67</td>
+<td>0.22</td>
+</tr>
+<tr class="row-odd"><td>Water vapor</td>
+<td>H2O</td>
+<td>32.24</td>
+<td>0.1923 X 10-2</td>
+<td>1.055 X 10-5</td>
+<td>-3.595 X 10-9</td>
+<td>273-1800</td>
+<td>0.53</td>
+<td>0.24</td>
+</tr>
+<tr class="row-even"><td>Nitric oxide</td>
+<td>NO</td>
+<td>29.34</td>
+<td>-0.09395 X 10-2</td>
+<td>0.9747 X 10-5</td>
+<td>-4.187 X 10-9</td>
+<td>273-1500</td>
+<td>0.97</td>
+<td>0.36</td>
+</tr>
+<tr class="row-odd"><td>Nitrous oxide</td>
+<td>N2O</td>
+<td>24.11</td>
+<td>5.8632 X 10-2</td>
+<td>-3.562 X 10-5</td>
+<td>10.58 X 10-9</td>
+<td>273-1500</td>
+<td>0.59</td>
+<td>0.26</td>
+</tr>
+<tr class="row-even"><td>Nitrogen dioxide</td>
+<td>NO2</td>
+<td>22.9</td>
+<td>5.715 X 10-2</td>
+<td>-3.52 X 10-5</td>
+<td>7.87 X 10-9</td>
+<td>273-1500</td>
+<td>0.46</td>
+<td>0.18</td>
+</tr>
+<tr class="row-odd"><td>Ammonia</td>
+<td>NH3</td>
+<td>27.568</td>
+<td>2.5630 X 10-2</td>
+<td>0.99072 X 10-5</td>
+<td>-6.6909 X 10-9</td>
+<td>273-1500</td>
+<td>0.91</td>
+<td>0.36</td>
+</tr>
+<tr class="row-even"><td>Sulfur</td>
+<td>S2</td>
+<td>27.21</td>
+<td>2.218 X 10-2</td>
+<td>-1.628 X 10-5</td>
+<td>3.986 X 10-9</td>
+<td>273-1800</td>
+<td>0.99</td>
+<td>0.38</td>
+</tr>
+<tr class="row-odd"><td>Sulfur dioxide</td>
+<td>SO2</td>
+<td>25.78</td>
+<td>5.795 X 10-2</td>
+<td>-3.812 X 10-5</td>
+<td>8.612 X 10-9</td>
+<td>273-1800</td>
+<td>0.45</td>
+<td>0.24</td>
+</tr>
+<tr class="row-even"><td>Sulfur trioxide</td>
+<td>SO3</td>
+<td>16.4</td>
+<td>14.58 X 10-2</td>
+<td>-11.20 X 10-5</td>
+<td>32.42 X 10-9</td>
+<td>273-1300</td>
+<td>0.29</td>
+<td>0.13</td>
+</tr>
+<tr class="row-odd"><td>Acetylene</td>
+<td>C2H2</td>
+<td>21.8</td>
+<td>9.2143 X 10-2</td>
+<td>-6.527 X 10-5</td>
+<td>18.21 X 10-9</td>
+<td>273-1500</td>
+<td>1.46</td>
+<td>0.59</td>
+</tr>
+<tr class="row-even"><td>Benzene</td>
+<td>C6H6</td>
+<td>-36.22</td>
+<td>48.475 X 10-2</td>
+<td>-31.57 X 10-5</td>
+<td>77.62 X 10-9</td>
+<td>273-1500</td>
+<td>0.34</td>
+<td>0.2</td>
+</tr>
+<tr class="row-odd"><td>Methanol</td>
+<td>CH4O</td>
+<td>19</td>
+<td>9.152 X 10-2</td>
+<td>-1.22 X 10-5</td>
+<td>-8.039 X 10-9</td>
+<td>273-1000</td>
+<td>0.18</td>
+<td>0.08</td>
+</tr>
+<tr class="row-even"><td>Ethanol</td>
+<td>C2H6O</td>
+<td>19.9</td>
+<td>20.96 X 10-2</td>
+<td>-10.38 X 10-5</td>
+<td>20.05 X 10-9</td>
+<td>273-1500</td>
+<td>0.4</td>
+<td>0.22</td>
+</tr>
+<tr class="row-odd"><td>Hydrogen chloride</td>
+<td>HCl</td>
+<td>30.33</td>
+<td>-0.7620 X 10-2</td>
+<td>1.327 X 10-5</td>
+<td>-4.338 X 10-9</td>
+<td>273-1500</td>
+<td>0.22</td>
+<td>0.08</td>
+</tr>
+<tr class="row-even"><td>Methane</td>
+<td>CH4</td>
+<td>19.89</td>
+<td>5.024 X 10-2</td>
+<td>1.269 X 10-5</td>
+<td>-11.01 X 10-9</td>
+<td>273-1500</td>
+<td>1.33</td>
+<td>0.57</td>
+</tr>
+<tr class="row-odd"><td>Ethane</td>
+<td>C2H6</td>
+<td>6.9</td>
+<td>17.27 X 10-2</td>
+<td>-6.406 X 10-5</td>
+<td>7.285 X 10-9</td>
+<td>273-1500</td>
+<td>0.83</td>
+<td>0.28</td>
+</tr>
+<tr class="row-even"><td>Propane</td>
+<td>C3H8</td>
+<td>-4.04</td>
+<td>30.48 X 10-2</td>
+<td>-15.72 X 10-5</td>
+<td>31.74 X 10-9</td>
+<td>273-1500</td>
+<td>0.4</td>
+<td>0.12</td>
+</tr>
+<tr class="row-odd"><td>n-Butane</td>
+<td>C4H10</td>
+<td>3.96</td>
+<td>37.15 X 10-2</td>
+<td>-18.34 X 10-5</td>
+<td>35.00 X 10-9</td>
+<td>273-1500</td>
+<td>0.54</td>
+<td>0.24</td>
+</tr>
+<tr class="row-even"><td>i-Butane</td>
+<td>C4H10</td>
+<td>-7.913</td>
+<td>41.60 X 10-2</td>
+<td>-23.01 X 10-5</td>
+<td>49.91 X 10-9</td>
+<td>273-1500</td>
+<td>0.25</td>
+<td>0.13</td>
+</tr>
+<tr class="row-odd"><td>n-Pentane</td>
+<td>C5H12</td>
+<td>6.774</td>
+<td>45.43 X 10-2</td>
+<td>-22.46 X 10-3</td>
+<td>42.29 X 10-9</td>
+<td>273-1500</td>
+<td>0.56</td>
+<td>0.21</td>
+</tr>
+<tr class="row-even"><td>n-Hexane</td>
+<td>C6H14</td>
+<td>6.938</td>
+<td>55.22 X 10-2</td>
+<td>-28.65 X 10-5</td>
+<td>57.69 X 10-9</td>
+<td>273-1500</td>
+<td>0.72</td>
+<td>0.2</td>
+</tr>
+<tr class="row-odd"><td>Ethylene</td>
+<td>C2H4</td>
+<td>3.95</td>
+<td>15.64 X 10-2</td>
+<td>-8.344 X 10-5</td>
+<td>17.67 X 10-9</td>
+<td>273-1500</td>
+<td>0.54</td>
+<td>0.13</td>
+</tr>
+<tr class="row-even"><td>Propylene</td>
+<td>C3H6</td>
+<td>3.15</td>
+<td>23.83 X 10-2</td>
+<td>-12.18 X 10-5</td>
+<td>24.62 X 10-9</td>
+<td>273-1500</td>
+<td>0.73</td>
+<td>0.17</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pythermophy 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Jithin Jith.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
