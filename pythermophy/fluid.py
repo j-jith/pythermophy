@@ -44,7 +44,7 @@ class Fluid(object):
 
         invalid = []
 
-        if not isinstance(self.name, basestring):
+        if not isinstance(self.name, str):
             invalid.append('name should be a string')
         if not isinstance(self.molar_mass, int) and not isinstance(self.molar_mass, float):
             invalid.append('molar_mass should be int/float')
