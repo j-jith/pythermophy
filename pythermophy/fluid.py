@@ -89,7 +89,7 @@ class Fluid(object):
 
         try:
             with open(filename, 'r') as fileh:
-                data = yaml.load(fileh)
+                data = yaml.safe_load(fileh)
                 #print(data)
                 try:
                     name = data['name']
